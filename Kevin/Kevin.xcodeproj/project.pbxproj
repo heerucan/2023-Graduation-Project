@@ -36,6 +36,7 @@
 		5B82EF1C29F96BB6009F8A08 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1B29F96BB6009F8A08 /* FSCalendar */; };
 		5B82EF1F29F96BDB009F8A08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1E29F96BDB009F8A08 /* SnapKit */; };
 		5B82EF2229F96BFD009F8A08 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF2129F96BFD009F8A08 /* Then */; };
+		5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FDC29FFE537003FE7CD /* CalendarCell.swift */; };
 		5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */; };
 		5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CB829FF8BAC000AD570 /* MainViewModel.swift */; };
 		5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CBA29FF8BE2000AD570 /* WriteViewController.swift */; };
@@ -103,6 +104,7 @@
 		5B82EEFF29F96A32009F8A08 /* KevinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KevinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EF0329F96A32009F8A08 /* KevinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinUITests.swift; sourceTree = "<group>"; };
 		5B82EF0529F96A32009F8A08 /* KevinUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B943FDC29FFE537003FE7CD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5BEA1CB829FF8BAC000AD570 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5BEA1CBA29FF8BE2000AD570 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */,
+				5B943FDC29FFE537003FE7CD /* CalendarCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				5BEA1CC129FF8C01000AD570 /* WriteViewModel.swift in Sources */,
 				5B11518F29FBD78500130CB0 /* UITextView+.swift in Sources */,
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
+				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
 				5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

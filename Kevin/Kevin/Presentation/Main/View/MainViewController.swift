@@ -47,16 +47,12 @@ final class MainViewController: UIViewController {
     }
     
     private func bind() {
-        //        calendar.rx.
+//        calendar.rx.
         
     }
 }
 
 extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-//    func minimumDate(for calendar: FSCalendar) -> Date {
-//        return Date()
-//    }
-    
     func maximumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
@@ -70,20 +66,19 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     /// 날짜 선택 시 화면전환
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print("선택한 날짜", date)
         calendar.setCurrentPage(date, animated: true)
-        calendar.appearance.titleFont = UIFont.systemFont(ofSize: 16, weight: .black)
     }
     
-    private func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleTodayFontFor date: Date) -> UIFont? {
-        /// 오늘 날짜의 폰트 크기 변경
-        return UIFont.systemFont(ofSize: 16, weight: .black)
+    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+        let cell = calendar.dequeueReusableCell(withIdentifier: CalendarCell.className, for: date, at: position)
+        as! CalendarCell
+        return cell
     }
 }
 
 extension MainViewController {
     private func setUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     private func setLayout() {
@@ -109,6 +104,7 @@ extension MainViewController {
     private func setCalendarUI() {
         calendar.delegate = self
         calendar.dataSource = self
+        calendar.register(CalendarCell.self, forCellReuseIdentifier: CalendarCell.className)
         
         calendar.layoutIfNeeded()
         calendar.locale = Locale(identifier: "ko_KR")
@@ -118,7 +114,7 @@ extension MainViewController {
         calendar.allowsSelection = true
         calendar.allowsMultipleSelection = false
 
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = StringLiteral.Calendar.dateFormat
         calendar.appearance.headerTitleOffset = CGPoint(x: -80, y: 0)
         calendar.appearance.headerTitleAlignment = .left
         calendar.appearance.headerTitleFont = .kevinFont(type: .medium16)
@@ -128,9 +124,7 @@ extension MainViewController {
         calendar.appearance.weekdayTextColor = .black
         calendar.appearance.titleDefaultColor = .black
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-//        calendar.appearance.selectionColor = .white
-        
-        
-//        calendar.allowsSelection = true
+        calendar.appearance.selectionColor = .pink100
+        calendar.appearance.titleSelectionColor = .white
     }
 }
