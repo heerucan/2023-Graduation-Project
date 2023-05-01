@@ -13,27 +13,27 @@ final class KevinButton: UIButton {
     
     enum KevinButtonType {
         case share
-        case analysis
-        case check
+        case card
+        case result
         
         var title: String {
             switch self {
             case .share: return StringLiteral.Button.share
-            case .analysis: return StringLiteral.Button.analysis
-            case .check: return StringLiteral.Button.check
+            case .card: return StringLiteral.Button.card
+            case .result: return StringLiteral.Button.result
             }
         }
         
         var backgroundColor: UIColor {
             switch self {
             case .share: return .gray100
-            case .analysis: return .black
-            case .check: return .green100
+            case .card: return .black
+            case .result: return .green100
             }
         }
     }
     
-    private var type: KevinButtonType = .analysis
+    private var type: KevinButtonType = .result
     
     init(type: KevinButtonType) {
         self.type = type

@@ -34,7 +34,8 @@ final class KevinNavigationBar: UIView {
         
         var rightTitle: String? {
             switch self {
-            case .write: return StringLiteral.Button.writeBarButton
+            case .write: return StringLiteral.Button.analysis
+            case .detail: return StringLiteral.Button.edit
             case .analysis: return StringLiteral.Button.ok
             default: return nil
             }

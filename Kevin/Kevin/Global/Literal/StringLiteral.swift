@@ -9,28 +9,24 @@ import Foundation
 
 enum StringLiteral {
     enum Button {
-        static let writeBarButton = "분석"
         static let ok = "확인"
         static let cancel = "취소"
-        static let another = "다른 응답보기"
+        static let analysis = "분석"
+        static let edit = "편집"
+        static let anotherResult = "다른 응답보기"
         static let share = "공유하기"
-        static let check = "응답보기"
-        static let analysis = "감정분석 보기"
+        static let result = "응답보기"
+        static let card = "분석카드 보기"
     }
     
     enum Calendar {
         static let month = "월"
         static let day = "일"
-        static let mon = "월"
-        static let tue = "화"
-        static let wed = "수"
-        static let thur = "목"
-        static let fri = "금"
-        static let sat = "토"
-        static let sun = "일"
+        static let dateFormat = "YYYY년 M월"
     }
     
     static let main = "오늘 하루\n내 감정을 기록해봐요"
+    static let placeholder = "오늘 하루 나의 감정을 기록해요"
     static let positive = "긍정"
     static let negative = "부정"
     static let neutral = "중립"
