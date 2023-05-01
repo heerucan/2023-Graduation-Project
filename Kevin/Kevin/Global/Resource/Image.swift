@@ -14,4 +14,10 @@ enum Image {
     static let green = UIImage(named: "img_Green")!
     static let back = UIImage(named: "btn_back")!
     static let setting = UIImage(named: "btn_setting")!
+    
+    enum Back {
+        static let green = UIImage(named: "img_greenBack")!
+        static let blue = UIImage(named: "img_blueBack")!
+        static let pink = UIImage(named: "img_pinkBack")!
+    }
 }
