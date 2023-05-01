@@ -8,7 +8,15 @@
 import Foundation
 
 protocol Coordinator: AnyObject {
+    var delegate: CoordinatorFinishDelegate? { get set }
     var childCoordinators: [Coordinator] { get set }
     func start()
-    func childDidFinish(_ childCoordinator: Coordinator)
+    func finish()
+}
+
+extension Coordinator {
+    func finish() {
+        childCoordinators.removeAll()
+        delegate?.didFinish(self)
+    }
 }

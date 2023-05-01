@@ -10,7 +10,8 @@ import Foundation
 enum StringLiteral {
     static let main = "오늘 하루\n내 감정을 기록해봐요"
     static let analysis = "분석"
-    static let confirm = "확인"
+    static let ok = "확인"
+    static let cancel = "취소"
     static let anotherResponse = "다른 응답보기"
     static let share = "공유하기"
     static let check = "응답보기"

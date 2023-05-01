@@ -16,7 +16,7 @@ extension UIButton {
      clicked(completion : @escaping ((Bool) -> Void)) 함수를 활용해,
      버튼이 눌렸을때, 줄어들었다가 다시 늘어나는 (Popping)효과와 햅틱을 추가해서
      사용자에게 버튼이 눌렸다는 인터렉션을 제공한다.
-     - 출처: 28기 iOS 파트장님 
+     - 출처: SOPT 28기 iOS 파트장님 
      */
     
     // iOS14부터 UIAction이 addAction 가능해서, 이전에는 NSObject형태로 등록해서 처리하는 방식으로

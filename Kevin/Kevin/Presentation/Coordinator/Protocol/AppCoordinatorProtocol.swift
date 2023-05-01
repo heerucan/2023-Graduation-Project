@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  AppCoordinatorProtocol.swift
 //  Kevin
 //
 //  Created by heerucan on 2023/05/01.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AppCoordinator: Coordinator {
+protocol AppCoordinatorProtocol: Coordinator {
     func showMainFlow()
     func showSettingFlow()
 }
