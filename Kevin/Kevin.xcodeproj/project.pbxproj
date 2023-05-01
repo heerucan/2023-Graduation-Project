@@ -54,6 +54,8 @@
 		5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CE729FFA117000AD570 /* CoordinatorFinishDelegate.swift */; };
 		5BEA1CEB29FFA46D000AD570 /* MainCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CEA29FFA46D000AD570 /* MainCoordinatorProtocol.swift */; };
 		5BEA1CED29FFA48C000AD570 /* SettingCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CEC29FFA48C000AD570 /* SettingCoordinatorProtocol.swift */; };
+		5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CF429FFB8F8000AD570 /* KevinNavigationBar.swift */; };
+		5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CF629FFC0DD000AD570 /* FSCalendar+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		5BEA1CE729FFA117000AD570 /* CoordinatorFinishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishDelegate.swift; sourceTree = "<group>"; };
 		5BEA1CEA29FFA46D000AD570 /* MainCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5BEA1CEC29FFA48C000AD570 /* SettingCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		5BEA1CF429FFB8F8000AD570 /* KevinNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinNavigationBar.swift; sourceTree = "<group>"; };
+		5BEA1CF629FFC0DD000AD570 /* FSCalendar+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FSCalendar+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +274,7 @@
 				5B11518C29FBD75E00130CB0 /* UILabel+.swift */,
 				5B11518E29FBD78500130CB0 /* UITextView+.swift */,
 				5B11519029FBD86500130CB0 /* UIButton+.swift */,
+				5BEA1CF629FFC0DD000AD570 /* FSCalendar+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			children = (
 				5B11519C29FE3DF700130CB0 /* KevinButton.swift */,
 				5B11519E29FE3E0600130CB0 /* KevinCard.swift */,
+				5BEA1CF429FFB8F8000AD570 /* KevinNavigationBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -632,12 +638,14 @@
 				5B11519729FE3B3B00130CB0 /* Image.swift in Sources */,
 				5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */,
 				5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */,
+				5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */,
 				5B11518229FBD4F300130CB0 /* ReusableProtocol.swift in Sources */,
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
 				5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */,
 				5B11519329FBD96B00130CB0 /* Font.swift in Sources */,
 				5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */,
 				5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */,
+				5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */,
 				5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */,
 				5B11519129FBD86500130CB0 /* UIButton+.swift in Sources */,
 				5BEA1CE629FF972C000AD570 /* DetailViewController.swift in Sources */,
