@@ -21,7 +21,7 @@
 		5B11519929FE3C5700130CB0 /* MatrixLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519829FE3C5700130CB0 /* MatrixLiteral.swift */; };
 		5B11519B29FE3CB000130CB0 /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519A29FE3CB000130CB0 /* StringLiteral.swift */; };
 		5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519C29FE3DF700130CB0 /* KevinButton.swift */; };
-		5B11519F29FE3E0600130CB0 /* KevinCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519E29FE3E0600130CB0 /* KevinCard.swift */; };
+		5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519E29FE3E0600130CB0 /* KevinCardView.swift */; };
 		5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
@@ -37,6 +37,11 @@
 		5B82EF1F29F96BDB009F8A08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1E29F96BDB009F8A08 /* SnapKit */; };
 		5B82EF2229F96BFD009F8A08 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF2129F96BFD009F8A08 /* Then */; };
 		5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FDC29FFE537003FE7CD /* CalendarCell.swift */; };
+		5B943FDF29FFF918003FE7CD /* AnalysisType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FDE29FFF918003FE7CD /* AnalysisType.swift */; };
+		5B943FE129FFFA0A003FE7CD /* KevinImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE029FFFA0A003FE7CD /* KevinImageButton.swift */; };
+		5B943FE42A007D7F003FE7CD /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE32A007D7F003FE7CD /* ViewType.swift */; };
+		5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE52A00F8B2003FE7CD /* UICollectionViewCell+.swift */; };
+		5BAB2C332A0204C8002DEBDC /* KevinCardSideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */; };
 		5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */; };
 		5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CB829FF8BAC000AD570 /* MainViewModel.swift */; };
 		5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CBA29FF8BE2000AD570 /* WriteViewController.swift */; };
@@ -91,7 +96,7 @@
 		5B11519829FE3C5700130CB0 /* MatrixLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixLiteral.swift; sourceTree = "<group>"; };
 		5B11519A29FE3CB000130CB0 /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		5B11519C29FE3DF700130CB0 /* KevinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinButton.swift; sourceTree = "<group>"; };
-		5B11519E29FE3E0600130CB0 /* KevinCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCard.swift; sourceTree = "<group>"; };
+		5B11519E29FE3E0600130CB0 /* KevinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardView.swift; sourceTree = "<group>"; };
 		5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +110,11 @@
 		5B82EF0329F96A32009F8A08 /* KevinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinUITests.swift; sourceTree = "<group>"; };
 		5B82EF0529F96A32009F8A08 /* KevinUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5B943FDC29FFE537003FE7CD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		5B943FDE29FFF918003FE7CD /* AnalysisType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisType.swift; sourceTree = "<group>"; };
+		5B943FE029FFFA0A003FE7CD /* KevinImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinImageButton.swift; sourceTree = "<group>"; };
+		5B943FE32A007D7F003FE7CD /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
+		5B943FE52A00F8B2003FE7CD /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
+		5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardSideType.swift; sourceTree = "<group>"; };
 		5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5BEA1CB829FF8BAC000AD570 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5BEA1CBA29FF8BE2000AD570 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +267,7 @@
 		5B82EF2729F96CFB009F8A08 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				5B943FE22A007D22003FE7CD /* Enum */,
 				5B11518529FBD62D00130CB0 /* Literal */,
 				5B82EF3329F96D98009F8A08 /* Protocol */,
 				5B82EF2929F96D17009F8A08 /* Component */,
@@ -269,13 +280,14 @@
 		5B82EF2829F96D13009F8A08 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5B11518329FBD54200130CB0 /* UIView+.swift */,
-				5B11518629FBD67C00130CB0 /* CALayer+.swift */,
 				5B11518829FBD6E400130CB0 /* NSObject+.swift */,
-				5B11518A29FBD71700130CB0 /* UIViewController+.swift */,
+				5B11518629FBD67C00130CB0 /* CALayer+.swift */,
+				5B11519029FBD86500130CB0 /* UIButton+.swift */,
+				5B943FE52A00F8B2003FE7CD /* UICollectionViewCell+.swift */,
 				5B11518C29FBD75E00130CB0 /* UILabel+.swift */,
 				5B11518E29FBD78500130CB0 /* UITextView+.swift */,
-				5B11519029FBD86500130CB0 /* UIButton+.swift */,
+				5B11518329FBD54200130CB0 /* UIView+.swift */,
+				5B11518A29FBD71700130CB0 /* UIViewController+.swift */,
 				5BEA1CF629FFC0DD000AD570 /* FSCalendar+Rx.swift */,
 			);
 			path = Extension;
@@ -284,8 +296,9 @@
 		5B82EF2929F96D17009F8A08 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				5B11519E29FE3E0600130CB0 /* KevinCardView.swift */,
 				5B11519C29FE3DF700130CB0 /* KevinButton.swift */,
-				5B11519E29FE3E0600130CB0 /* KevinCard.swift */,
+				5B943FE029FFFA0A003FE7CD /* KevinImageButton.swift */,
 				5BEA1CF429FFB8F8000AD570 /* KevinNavigationBar.swift */,
 			);
 			path = Component;
@@ -341,10 +354,20 @@
 		5B82EF3329F96D98009F8A08 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */,
 				5B11518129FBD4F200130CB0 /* ReusableProtocol.swift */,
+				5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5B943FE22A007D22003FE7CD /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				5B943FDE29FFF918003FE7CD /* AnalysisType.swift */,
+				5B943FE32A007D7F003FE7CD /* ViewType.swift */,
+				5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		5BEA1CC229FF8C4C000AD570 /* Setting */ = {
@@ -359,8 +382,8 @@
 		5BEA1CC329FF8C53000AD570 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */,
 				5B943FDC29FFE537003FE7CD /* CalendarCell.swift */,
+				5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -621,6 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B943FE42A007D7F003FE7CD /* ViewType.swift in Sources */,
 				5BEA1CE229FF971D000AD570 /* DetailViewModel.swift in Sources */,
 				5B11519B29FE3CB000130CB0 /* StringLiteral.swift in Sources */,
 				5BEA1CBD29FF8BF3000AD570 /* AnalysisViewController.swift in Sources */,
@@ -629,11 +653,14 @@
 				5BEA1CCA29FF8C94000AD570 /* SettingViewController.swift in Sources */,
 				5B11519929FE3C5700130CB0 /* MatrixLiteral.swift in Sources */,
 				5BEA1CD029FF9075000AD570 /* AppCoordinatorProtocol.swift in Sources */,
+				5B943FE129FFFA0A003FE7CD /* KevinImageButton.swift in Sources */,
 				5BEA1CEB29FFA46D000AD570 /* MainCoordinatorProtocol.swift in Sources */,
-				5B11519F29FE3E0600130CB0 /* KevinCard.swift in Sources */,
+				5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */,
 				5BEA1CED29FFA48C000AD570 /* SettingCoordinatorProtocol.swift in Sources */,
+				5B943FDF29FFF918003FE7CD /* AnalysisType.swift in Sources */,
 				5B11518729FBD67C00130CB0 /* CALayer+.swift in Sources */,
 				5B11518429FBD54200130CB0 /* UIView+.swift in Sources */,
+				5BAB2C332A0204C8002DEBDC /* KevinCardSideType.swift in Sources */,
 				5B11518D29FBD75E00130CB0 /* UILabel+.swift in Sources */,
 				5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */,
 				5BEA1CD529FF9220000AD570 /* MainCoordinator.swift in Sources */,
@@ -646,6 +673,7 @@
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
 				5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */,
 				5B11519329FBD96B00130CB0 /* Font.swift in Sources */,
+				5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */,
 				5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */,
 				5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */,
 				5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */,
