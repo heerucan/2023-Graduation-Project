@@ -8,10 +8,13 @@
 import Foundation
 
 import RxSwift
+import RxRelay
 
 final class AnalysisViewModel: ViewModelType {
     
     weak var coordinator: MainCoordinator?
+    
+    let isOpen = BehaviorRelay(value: false)
     
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
