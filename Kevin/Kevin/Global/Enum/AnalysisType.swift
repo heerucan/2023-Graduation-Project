@@ -7,6 +7,7 @@
 
 import UIKit
 
+@frozen
 enum AnalysisType: String {
     case positive = "긍정"
     case negative = "부정"

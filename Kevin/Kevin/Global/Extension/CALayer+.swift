@@ -10,10 +10,10 @@ import UIKit
 extension CALayer {
     func applyShadow(
         color: UIColor = .black,
-        alpha: Float = 0.5,
+        alpha: Float = 0.25,
         x: CGFloat = 0,
-        y: CGFloat = 2,
-        blur: CGFloat = 4,
+        y: CGFloat = 0,
+        blur: CGFloat = 20,
         spread: CGFloat = 0
     ) {
         masksToBounds = false

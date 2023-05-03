@@ -19,7 +19,7 @@ extension UIView {
     
     func makeCorner(
         width: CGFloat = 3,
-        color: CGColor? = nil,
+        color: CGColor? = UIColor.white.cgColor,
         radius: CGFloat = 19
     ) {
         layer.borderWidth = width

@@ -21,4 +21,17 @@ extension UILabel {
                                       range: NSMakeRange(0, attributedString.length))
         attributedText = attributedString
     }
+    
+    func setLineSpacing(value: CGFloat = 7) {
+        if let labelText = text, labelText.count > 0 {
+            let attributedString = NSMutableAttributedString(string: labelText)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = value
+            attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                          value: paragraphStyle,
+                                          range: NSMakeRange(0, attributedString.length))
+            attributedText = attributedString
+            lineBreakStrategy = .hangulWordPriority
+        }
+    }
 }

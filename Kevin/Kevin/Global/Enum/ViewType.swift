@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+@frozen
+enum ViewType {
+    case write
+    case detail
+}

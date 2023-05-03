@@ -13,6 +13,8 @@ import Then
 final class KevinCardView: UIView {
     
     private var type: AnalysisType = .positive
+    private var cardSide: KevinCardSideType = .back
+    
     private var date: String = "오늘의 감정" {
         didSet {
             topLabel.text = date + "의 감정"
@@ -31,7 +33,7 @@ final class KevinCardView: UIView {
         $0.textAlignment = .center
     }
     
-    // TODO: - 분기처리 해야 함 - 앞인지 뒤인지
+    /// 앞쪽 UI Property
     private let stickerImageView = UIImageView().then {
         $0.image = Image.green
         $0.contentMode = .scaleAspectFill
@@ -45,8 +47,28 @@ final class KevinCardView: UIView {
         $0.numberOfLines = 1
     }
     
-    init(type: AnalysisType) {
+    /// 뒷쪽 UI Property
+    private let backScrollView = UIScrollView().then {
+        $0.backgroundColor = .clear
+        $0.showsVerticalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+    }
+    
+    private let contentView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    private let analysisLabel = UILabel().then {
+        $0.font = .kevinFont(type: .regular16)
+        $0.textAlignment = .left
+        $0.numberOfLines = 0
+        $0.textColor = .black
+        $0.text = "네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이"
+    }
+    
+    init(type: AnalysisType, side: KevinCardSideType) {
         self.type = type
+        self.cardSide = side
         super.init(frame: .zero)
         setUI()
         setLayout()
@@ -63,10 +85,11 @@ final class KevinCardView: UIView {
         self.backgroundColor = .white.withAlphaComponent(0.5)
         topView.backgroundColor = type.color
         stickerImageView.image = type.sticker
+        analysisLabel.setLineSpacing()
     }
     
     private func setLayout() {
-        self.addSubviews([topView, stickerImageView, percentageLabel])
+        self.addSubview(topView)
         topView.addSubview(topLabel)
         
         topView.snp.makeConstraints { make in
@@ -81,6 +104,12 @@ final class KevinCardView: UIView {
             make.directionalHorizontalEdges.equalToSuperview().inset(19)
         }
         
+        cardSide == .front ? setFrontSideLayout() : setBackSideLayout()
+    }
+    
+    private func setFrontSideLayout() {
+        self.addSubviews([stickerImageView, percentageLabel])
+        
         stickerImageView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).offset(45)
             make.centerX.equalToSuperview()
@@ -90,6 +119,27 @@ final class KevinCardView: UIView {
         percentageLabel.snp.makeConstraints { make in
             make.top.equalTo(stickerImageView.snp.bottom).offset(45)
             make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func setBackSideLayout() {
+        self.addSubview(backScrollView)
+        backScrollView.addSubview(contentView)
+        contentView.addSubview(analysisLabel)
+        
+        backScrollView.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(20)
+            make.directionalHorizontalEdges.equalToSuperview().inset(25)
+            make.bottom.equalToSuperview().inset(35)
+        }
+
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(backScrollView.snp.width)
+        }
+        
+        analysisLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
