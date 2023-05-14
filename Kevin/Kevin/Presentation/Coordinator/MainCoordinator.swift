@@ -7,10 +7,16 @@
 
 import UIKit
 
+enum CoordinatorType {
+    case main
+    case setting
+}
+
 final class MainCoordinator: Coordinator {
     
     weak var delegate: CoordinatorFinishDelegate?
     var childCoordinators = [Coordinator]()
+    var type: CoordinatorType = .main
     // 화면 전환을 위해 사용하는 UINavigationController 객체이다.
     private let navigationController: UINavigationController
     
@@ -28,7 +34,7 @@ final class MainCoordinator: Coordinator {
     
     // 특정 날짜를 인자로 받아 PostVC을 만들고 UINavigationController에 추가해서 화면에 보여준다.
     func showWriteScreen(forDate date: Date) {
-        let viewModel = WriteViewModel(coordinator: self)
+        let viewModel = WriteViewModel(coordinator: self, date: date)
         let viewController = WriteViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -45,8 +51,25 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
+    func showSettingFlow() {
+        let settingCoordinator = SettingCoordinator(navigationController: navigationController)
+        settingCoordinator.delegate = self
+        settingCoordinator.start()
+        childCoordinators.append(settingCoordinator)
+    }
+    
     func popRootViewController(toastMessage: String?) {
         navigationController.popToRootViewController(animated: true)
         navigationController.setNavigationBarHidden(true, animated: false)
+    }
+}
+
+extension MainCoordinator: CoordinatorFinishDelegate {
+    func didFinish(_ childCoordinator: Coordinator) {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+    
+    func settingCoordinatorDidFinish() {
+        self.start()
     }
 }

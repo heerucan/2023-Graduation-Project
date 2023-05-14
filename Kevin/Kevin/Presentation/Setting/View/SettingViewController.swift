@@ -28,10 +28,17 @@ final class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         bind()
     }
     
     private func bind() {
         
+    }
+}
+
+extension SettingViewController {
+    private func setUI() {
+        view.backgroundColor = .yellow
     }
 }

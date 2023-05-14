@@ -47,8 +47,10 @@ final class MainViewController: UIViewController {
     }
     
     private func bind() {
-//        calendar.rx.
-        
+        let input = MainViewModel.Input(
+            settingButtonDidTap: naviBar.rightBarButton.rx.tap,
+            calendarDidSelected: calendar.rx.didSelect)
+        let output = viewModel.transform(input)
     }
 }
 
@@ -66,7 +68,7 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     
     /// 날짜 선택 시 화면전환
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        calendar.setCurrentPage(date, animated: true)
+        viewModel.selectedDate.accept(date)
     }
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
@@ -79,6 +81,7 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
 extension MainViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setLayout() {
