@@ -8,17 +8,19 @@
 import Foundation
 
 import RxSwift
+import RxCocoa
 
 final class DetailViewModel: ViewModelType {
     
     weak var coordinator: MainCoordinator?
+    private let disposeBag = DisposeBag()
     
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
     }
     
     struct Input {
-        
+        let backButtonTap: ControlEvent<Void>
     }
     
     struct Output {
@@ -26,7 +28,13 @@ final class DetailViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        let output = Output()
-        return output
+        input.backButtonTap
+            .subscribe { [weak self] _ in
+                guard let self else { return }
+                self.coordinator?.finish()
+            }
+            .disposed(by: disposeBag)
+        
+        return Output()
     }
 }

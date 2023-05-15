@@ -16,16 +16,14 @@ final class AnalysisViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let viewModel: AnalysisViewModel
-    
-    private var type: AnalysisType!
-    
+        
     private lazy var backView = UIImageView()
     private let naviBar = KevinNavigationBar(type: .analysis)
     private let anoterButton = KevinImageButton()
     private let tapGesture = UITapGestureRecognizer()
     private let cardView = UIView()
-    private lazy var cardFrontView = KevinCardView(type: type, side: .front)
-    private lazy var cardBackView = KevinCardView(type: type, side: .back)
+    private lazy var cardFrontView = KevinCardView(type: viewModel.type, side: .front)
+    private lazy var cardBackView = KevinCardView(type: viewModel.type, side: .back)
     private let shareButton = KevinButton(type: .share)
     private let resultButton = KevinButton(type: .result)
     
@@ -48,20 +46,27 @@ final class AnalysisViewController: UIViewController {
     private var isOpen = true
     
     private func bind() {
-        // TODO: - 개선 : input. output으로 개선
-        // isOpen, type 다 viewModel행?
+        let input = AnalysisViewModel.Input(
+            backButtonTap: naviBar.leftBarButton.rx.tap,
+            comfirmButtonTap: naviBar.rightBarButton.rx.tap,
+            resultButtonTap: resultButton.rx.tap
+        )
+        let output = viewModel.transform(input)
         
-        resultButton.rx.tap
+        output.resultButtonTap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.cardBackView.isHidden = false
                 self.setFlipAnimation(self.isOpen)
+                self.makeVibrate()
             })
             .disposed(by: disposeBag)
         
         tapGesture.rx.event
-            .bind { _ in
+            .bind { [weak self] _ in
+                guard let self = self else { return }
                 self.setEmitterLayer()
+                self.cardView.makeVibrate()
             }
             .disposed(by: disposeBag)
     }
@@ -80,7 +85,6 @@ extension AnalysisViewController {
                           completion: nil)
     }
     
-    // TODO: - extension으로 빼기
     private func setEmitterLayer() {
         let emitterLayer = CAEmitterLayer()
         emitterLayer.emitterPosition = CGPoint(
@@ -100,7 +104,7 @@ extension AnalysisViewController {
         cell.scale = 0.1 // 원래크기의 1/10을 곱함
         cell.scaleRange = 0.03 // 크기 범주
         cell.yAcceleration = 1400 // 양수는 중력적용, 음수는 위로 날아감, 값만큼 위로 올라가다가 내려감
-        cell.contents = type.sticker?.cgImage
+        cell.contents = viewModel.type.sticker?.cgImage
         
         emitterLayer.emitterCells = [cell]
         view.layer.addSublayer(emitterLayer)
@@ -114,10 +118,9 @@ extension AnalysisViewController {
 extension AnalysisViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
-        type = .neutral
-        backView.image = type.back
         backView.contentMode = .scaleAspectFill
-        resultButton.backgroundColor = type.color
+        backView.image = viewModel.type.back
+        resultButton.backgroundColor = viewModel.type.color
         cardBackView.isHidden = true
         cardView.addGestureRecognizer(tapGesture)
     }

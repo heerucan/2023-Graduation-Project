@@ -23,6 +23,7 @@
 		5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519C29FE3DF700130CB0 /* KevinButton.swift */; };
 		5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519E29FE3E0600130CB0 /* KevinCardView.swift */; };
 		5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */; };
+		5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5C3B2A10C7600030D407 /* Rx+.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		5B11519C29FE3DF700130CB0 /* KevinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinButton.swift; sourceTree = "<group>"; };
 		5B11519E29FE3E0600130CB0 /* KevinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardView.swift; sourceTree = "<group>"; };
 		5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		5B1B5C3B2A10C7600030D407 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,27 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
+		5B1B5C382A10B4B40030D407 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		5B1B5C392A10B4BD0030D407 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		5B1B5C3A2A10B4C70030D407 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		5B82EED629F96A2E009F8A08 = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +262,9 @@
 		5B82EF2429F96CEC009F8A08 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B5C382A10B4B40030D407 /* Entity */,
+				5B1B5C3A2A10B4C70030D407 /* Interface */,
+				5B1B5C392A10B4BD0030D407 /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -289,6 +315,7 @@
 				5B11518329FBD54200130CB0 /* UIView+.swift */,
 				5B11518A29FBD71700130CB0 /* UIViewController+.swift */,
 				5BEA1CF629FFC0DD000AD570 /* FSCalendar+Rx.swift */,
+				5B1B5C3B2A10C7600030D407 /* Rx+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -688,6 +715,7 @@
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
 				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
 				5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */,
+				5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

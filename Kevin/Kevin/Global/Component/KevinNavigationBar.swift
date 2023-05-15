@@ -43,9 +43,10 @@ final class KevinNavigationBar: UIView {
     }
     
     private var type: NavigationType = .main
+    
     let leftBarButton = UIButton()
     let rightBarButton = UIButton()
-    
+        
     init(type: NavigationType) {
         self.type = type
         super.init(frame: .zero)

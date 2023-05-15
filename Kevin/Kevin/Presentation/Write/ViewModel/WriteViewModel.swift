@@ -42,15 +42,17 @@ final class WriteViewModel: ViewModelType {
     
     func transform(_ input: Input) -> Output {
         
+        // 서버연결 부분
         input.analysisButtonTap
             .subscribe { [weak self] _ in
                 guard let self else { return }
-                self.coordinator?.showAnalysisScreen(for: "")
+                self.coordinator?.showAnalysisScreen(for: "", type: .positive)
             }
             .disposed(by: disposeBag)
         
         input.backButtonTap
-            .subscribe { _ in
+            .subscribe { [weak self] _ in
+                guard let self else { return }
                 self.coordinator?.finish()
             }
             .disposed(by: disposeBag)

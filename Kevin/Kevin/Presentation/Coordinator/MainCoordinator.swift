@@ -45,8 +45,8 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showAnalysisScreen(for content: String) {
-        let viewModel = AnalysisViewModel(coordinator: self)
+    func showAnalysisScreen(for content: String, type: AnalysisType) {
+        let viewModel = AnalysisViewModel(coordinator: self, type: type)
         let viewController = AnalysisViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
