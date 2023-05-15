@@ -58,15 +58,19 @@ final class MainCoordinator: Coordinator {
         childCoordinators.append(settingCoordinator)
     }
     
-    func popRootViewController(toastMessage: String?) {
+    func popRootViewController() {
         navigationController.popToRootViewController(animated: true)
         navigationController.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func finish() {
+        self.didFinish(self)
     }
 }
 
 extension MainCoordinator: CoordinatorFinishDelegate {
     func didFinish(_ childCoordinator: Coordinator) {
-        navigationController.dismiss(animated: true, completion: nil)
+        navigationController.popViewController(animated: true)
     }
     
     func settingCoordinatorDidFinish() {
