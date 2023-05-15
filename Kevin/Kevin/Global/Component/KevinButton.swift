@@ -28,7 +28,7 @@ final class KevinButton: UIButton {
             switch self {
             case .share: return .gray100
             case .card: return .black
-            case .result: return .green100
+            case .result: return .green200
             }
         }
     }

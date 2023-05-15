@@ -40,7 +40,7 @@ enum KevinFontType {
     var weight: UIFont.Weight {
         switch self {
         case .medium22, .medium18, .medium16, .medium14, .medium12:
-            return .semibold
+            return .medium
         case .black16:
             return .black
         case .regular16, .regular13:

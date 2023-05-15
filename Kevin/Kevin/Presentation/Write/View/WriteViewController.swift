@@ -19,7 +19,6 @@ final class WriteViewController: UIViewController {
     
     private let naviBar = KevinNavigationBar(type: .write)
     private let dateLabel = UILabel().then {
-        $0.text = "2022년 4월 22일"
         $0.font = .kevinFont(type: .medium14)
         $0.textColor = .black
         $0.textAlignment = .left
@@ -27,7 +26,7 @@ final class WriteViewController: UIViewController {
     
     private let textView = UITextView().then {
         $0.font = .kevinFont(type: .regular16)
-        $0.textColor = .black
+        $0.textColor = .gray200
         $0.textAlignment = .left
         $0.text = StringLiteral.placeholder
     }
@@ -48,10 +47,59 @@ final class WriteViewController: UIViewController {
         setUI()
         setLayout()
         bind()
+        hideKeyboardTappedAround()
     }
     
     private func bind() {
+        let input = WriteViewModel.Input(
+            analysisButtonTap: naviBar.rightBarButton.rx.tap,
+            backButtonTap: naviBar.leftBarButton.rx.tap,
+            textViewText: textView.rx.text,
+            textDidBeginEditing: textView.rx.didBeginEditing,
+            textDidEndEditing: textView.rx.didEndEditing,
+            textDidEndDragging: textView.rx.didEndEditing
+        )
+        let output = viewModel.transform(input)
         
+        output.dateLabelText
+            .bind(to: dateLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.textViewIsValid
+            .bind(to: naviBar.rightBarButton.rx.isHighlighted)
+            .disposed(by: disposeBag)
+        
+        output.textViewIsValid
+            .map { !$0 }
+            .bind(to: naviBar.rightBarButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.didBeginEditing
+            .subscribe { [weak self] _ in
+                guard let self else { return }
+                if self.textView.text == StringLiteral.placeholder {
+                    self.textView.text = ""
+                }
+                self.textView.textColor = .black
+            }
+            .disposed(by: disposeBag)
+        
+        output.didEndEditing
+            .subscribe { [weak self] _ in
+                guard let self else { return }
+                if self.textView.text.isEmpty {
+                    self.textView.text = StringLiteral.placeholder
+                    self.textView.textColor = .gray200
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.didEndDragging
+            .subscribe { [weak self] _ in
+                guard let self else { return }
+                self.textView.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -61,7 +109,7 @@ extension WriteViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviBar, dateLabel, textView, cardButton])
+        view.addSubviews([naviBar, dateLabel, textView])
         
         naviBar.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(49)
@@ -77,12 +125,7 @@ extension WriteViewController {
             make.top.equalTo(dateLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(14)
             make.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(450)
-        }
-        
-        cardButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(105)
-            make.centerX.equalToSuperview()
+            make.height.equalTo(350)
         }
     }
 }

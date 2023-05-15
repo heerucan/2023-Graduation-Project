@@ -33,7 +33,6 @@ final class KevinCardView: UIView {
         $0.textAlignment = .center
     }
     
-    /// 앞쪽 UI Property
     private let stickerImageView = UIImageView().then {
         $0.image = Image.green
         $0.contentMode = .scaleAspectFill
@@ -47,7 +46,6 @@ final class KevinCardView: UIView {
         $0.numberOfLines = 1
     }
     
-    /// 뒷쪽 UI Property
     private let backScrollView = UIScrollView().then {
         $0.backgroundColor = .clear
         $0.showsVerticalScrollIndicator = false
@@ -63,7 +61,7 @@ final class KevinCardView: UIView {
         $0.textAlignment = .left
         $0.numberOfLines = 0
         $0.textColor = .black
-        $0.text = "네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이"
+        $0.text = "네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이"
     }
     
     init(type: AnalysisType, side: KevinCardSideType) {
@@ -132,7 +130,7 @@ final class KevinCardView: UIView {
             make.directionalHorizontalEdges.equalToSuperview().inset(25)
             make.bottom.equalToSuperview().inset(35)
         }
-
+        
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalTo(backScrollView.snp.width)
