@@ -46,7 +46,11 @@ final class MainCoordinator: Coordinator {
     }
     
     func showAnalysisScreen(for content: String, type: AnalysisType) {
-        let viewModel = AnalysisViewModel(coordinator: self, type: type)
+        let viewModel = AnalysisViewModel(
+            coordinator: self,
+            type: type,
+            content: content
+        )
         let viewController = AnalysisViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -61,6 +65,19 @@ final class MainCoordinator: Coordinator {
     func popRootViewController() {
         navigationController.popToRootViewController(animated: true)
         navigationController.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: StringLiteral.Button.cancel, style: .default) { _ in
+            self.navigationController.dismiss(animated: true)
+        }
+        let ok = UIAlertAction(title: StringLiteral.Button.ok, style: .destructive) { _ in
+            self.finish()
+        }
+        alertViewController.addAction(cancel)
+        alertViewController.addAction(ok)
+        navigationController.present(alertViewController, animated: true)
     }
     
     func finish() {
