@@ -17,6 +17,11 @@ final class WriteViewModel: ViewModelType {
     
     private let dateSubject = BehaviorSubject<Date?>(value: nil).asObserver()
     private let textViewInvalid = BehaviorSubject<Bool>(value: false)
+    private let typeRelay = BehaviorRelay<AnalysisType>(value: .neutral)
+    private var chatResponse = PublishSubject<ChatResponseDTO>()
+    private var naverResponse = PublishSubject<NaverResponseDTO>()
+    private var chatFail = PublishSubject<Error>()
+    
         
     init(coordinator: MainCoordinator, date: Date?) {
         self.coordinator = coordinator
@@ -42,18 +47,22 @@ final class WriteViewModel: ViewModelType {
     
     func transform(_ input: Input) -> Output {
         
-        // 서버연결 부분
         input.analysisButtonTap
-            .subscribe { [weak self] _ in
+            .withLatestFrom(input.textViewText.orEmpty)
+            .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
+            .subscribe { [weak self] text in
                 guard let self else { return }
-                self.coordinator?.showAnalysisScreen(for: "", type: .positive)
+                self.requestNaverAnalysis(text: text)
             }
             .disposed(by: disposeBag)
         
         input.backButtonTap
             .subscribe { [weak self] _ in
                 guard let self else { return }
-                self.coordinator?.finish()
+                self.coordinator?.showAlert(
+                    title: StringLiteral.Alert.title,
+                    message: StringLiteral.Alert.message
+                )
             }
             .disposed(by: disposeBag)
         
@@ -88,7 +97,49 @@ extension WriteViewModel {
     private func changeDateFormatter(_ date: Date?) -> String {
         guard let date = date else { return "" }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 M월 d일"
+        dateFormatter.dateFormat = StringLiteral.Calendar.fullDateFormat
         return dateFormatter.string(from: date)
+    }
+    
+    private func requestNaverAnalysis(text: String) {
+        NaverService.shared.requestNaverAnalysis(text: text)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                let type = AnalysisType(rawValue: response.document.sentiment) ?? .neutral
+                
+                self.naverResponse.onNext(response)
+                self.typeRelay.accept(type)
+                
+                // TODO: - 챗지피티한테 보낼 것은 다듬어서 전달
+//                let content =
+                self.requestChatGPT(content: "행복한 하루였어")
+                
+            }, onError: { error in
+                // TODO: - 에러 처리
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func requestChatGPT(content: String) {
+        ChatService.shared.requestChat(content: content)
+            .subscribe(onNext: { [weak self] response in
+                guard let self else { return }
+                let type = AnalysisType(rawValue: typeRelay.value.rawValue) ?? .neutral
+                
+                // TODO: - 네이버 응답결과 퍼센테이지도 전달해야함
+//                self.naverResponse.values
+                
+                self.chatResponse.onNext(response)
+                self.coordinator?.showAnalysisScreen(
+                    for: response.resultText,
+                    type: type)
+                                
+            }, onError: { error in
+                // TODO: - 에러 처리
+                print(error.localizedDescription)
+                self.chatFail.onNext(error)
+            })
+            .disposed(by: disposeBag)
     }
 }

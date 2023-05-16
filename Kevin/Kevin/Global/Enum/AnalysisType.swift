@@ -9,9 +9,9 @@ import UIKit
 
 @frozen
 enum AnalysisType: String {
-    case positive = "긍정"
-    case negative = "부정"
-    case neutral = "중립"
+    case positive = "positive"
+    case negative = "negative"
+    case neutral = "neutral"
     
     var color: UIColor {
         switch self {

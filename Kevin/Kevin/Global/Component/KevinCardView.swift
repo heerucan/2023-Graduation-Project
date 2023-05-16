@@ -38,7 +38,7 @@ final class KevinCardView: UIView {
         $0.contentMode = .scaleAspectFill
     }
     
-    private let percentageLabel = UILabel().then {
+    let percentageLabel = UILabel().then {
         $0.text = "긍정 98% 부정 2%"
         $0.textColor = .black
         $0.font = .kevinFont(type: .medium18)
@@ -56,7 +56,7 @@ final class KevinCardView: UIView {
         $0.backgroundColor = .clear
     }
     
-    private let analysisLabel = UILabel().then {
+    let analysisLabel = UILabel().then {
         $0.font = .kevinFont(type: .regular16)
         $0.textAlignment = .left
         $0.numberOfLines = 0

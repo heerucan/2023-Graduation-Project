@@ -23,10 +23,16 @@ enum StringLiteral {
         static let month = "월"
         static let day = "일"
         static let dateFormat = "YYYY년 M월"
+        static let fullDateFormat = "yyyy년 M월 d일"
     }
     
-    static let main = "오늘 하루\n내 감정을 기록해봐요"
-    static let placeholder = "오늘 하루 나의 감정을 기록해요"
+    enum Alert {
+        static let title = "뒤로 가실 건가요?"
+        static let message = "작성한 글은 저장되지 않아요!"
+    }
+    
+    static let main = "오늘 하루\n내 감정을 기록해봐요 :)"
+    static let placeholder = "오늘 어떤 감정을 느꼈는지 솔직하게 기록해봐요.\nex). 오늘 나를 위한 선물을 해서 기분이 좋았어"
     static let positive = "긍정"
     static let negative = "부정"
     static let neutral = "중립"

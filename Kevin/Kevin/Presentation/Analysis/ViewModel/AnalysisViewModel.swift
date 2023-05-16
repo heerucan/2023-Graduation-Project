@@ -15,9 +15,16 @@ final class AnalysisViewModel: ViewModelType {
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: MainCoordinator, type: AnalysisType) {
+    let type: AnalysisType
+    private let contentRelay = BehaviorRelay<String>(value: "")
+    
+    init(coordinator: MainCoordinator,
+         type: AnalysisType,
+         content: String
+    ) {
         self.coordinator = coordinator
         self.type = type
+        self.contentRelay.accept(content)
     }
     
     struct Input {
@@ -28,9 +35,9 @@ final class AnalysisViewModel: ViewModelType {
     
     struct Output {
         let resultButtonTap: ControlEvent<Void>
+//        let percentageText: BehaviorRelay<String>
+        let analysisText: BehaviorRelay<String>
     }
-    
-    let type: AnalysisType
     
     func transform(_ input: Input) -> Output {
         input.backButtonTap
@@ -41,6 +48,7 @@ final class AnalysisViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.comfirmButtonTap
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe { [weak self] _ in
                 guard let self else { return }
                 self.coordinator?.popRootViewController()
@@ -48,9 +56,14 @@ final class AnalysisViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         let resultButtonTap = input.resultButtonTap
+        let analysisText = contentRelay
+        
+        print("분석뷰모델 gpt 응답 ->> ", contentRelay.value)
                     
         return Output(
-            resultButtonTap: resultButtonTap
+            resultButtonTap: resultButtonTap,
+//            percentageText: <#T##BehaviorRelay<String>#>,
+            analysisText: analysisText
         )
     }
 }

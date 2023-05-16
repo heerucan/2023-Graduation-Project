@@ -62,6 +62,13 @@ final class AnalysisViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+//        output.
+        
+        output.analysisText
+            .bind(to: cardBackView.analysisLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        
         tapGesture.rx.event
             .bind { [weak self] _ in
                 guard let self = self else { return }
@@ -69,6 +76,8 @@ final class AnalysisViewController: UIViewController {
                 self.cardView.makeVibrate()
             }
             .disposed(by: disposeBag)
+        
+        
     }
 }
 

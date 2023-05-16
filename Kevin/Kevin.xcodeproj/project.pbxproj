@@ -24,6 +24,18 @@
 		5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519E29FE3E0600130CB0 /* KevinCardView.swift */; };
 		5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */; };
 		5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5C3B2A10C7600030D407 /* Rx+.swift */; };
+		5B1B5CC32A13BED10030D407 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC22A13BED10030D407 /* ChatAPI.swift */; };
+		5B1B5CC52A13BEE50030D407 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC42A13BEE50030D407 /* APIKey.swift */; };
+		5B1B5CC72A13BF1D0030D407 /* ChatRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */; };
+		5B1B5CC92A13BF280030D407 /* ChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */; };
+		5B1B5CCB2A13BF2F0030D407 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */; };
+		5B1B5CCD2A13BF360030D407 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCC2A13BF360030D407 /* ChatService.swift */; };
+		5B1B5CCF2A13BF3E0030D407 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */; };
+		5B1B5CD12A13BF510030D407 /* NaverRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */; };
+		5B1B5CD32A13BF5A0030D407 /* NaverResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */; };
+		5B1B5CD52A13BFCD0030D407 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */; };
+		5B1B5CD82A13C1060030D407 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD72A13C1060030D407 /* Moya */; };
+		5B1B5CDA2A13C1060030D407 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD92A13C1060030D407 /* RxMoya */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -31,7 +43,6 @@
 		5B82EEFA29F96A32009F8A08 /* KevinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEF929F96A32009F8A08 /* KevinTests.swift */; };
 		5B82EF0429F96A32009F8A08 /* KevinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EF0329F96A32009F8A08 /* KevinUITests.swift */; };
 		5B82EF0629F96A32009F8A08 /* KevinUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EF0529F96A32009F8A08 /* KevinUITestsLaunchTests.swift */; };
-		5B82EF1429F96B68009F8A08 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1329F96B68009F8A08 /* Moya */; };
 		5B82EF1729F96B8D009F8A08 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1629F96B8D009F8A08 /* RxCocoa */; };
 		5B82EF1929F96B8D009F8A08 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1829F96B8D009F8A08 /* RxSwift */; };
 		5B82EF1C29F96BB6009F8A08 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 5B82EF1B29F96BB6009F8A08 /* FSCalendar */; };
@@ -100,6 +111,16 @@
 		5B11519E29FE3E0600130CB0 /* KevinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardView.swift; sourceTree = "<group>"; };
 		5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5B1B5C3B2A10C7600030D407 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
+		5B1B5CC22A13BED10030D407 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = ../../../../../../Documents/ChatAPI.swift; sourceTree = "<group>"; };
+		5B1B5CC42A13BEE50030D407 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKey.swift; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Network/Util/APIKey.swift"; sourceTree = "<group>"; };
+		5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRequestDTO.swift; path = ../../../../../../ChatRequestDTO.swift; sourceTree = "<group>"; };
+		5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatResponseDTO.swift; path = ../../../../../../ChatResponseDTO.swift; sourceTree = "<group>"; };
+		5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverAPI.swift; path = ../../../../../../NaverAPI.swift; sourceTree = "<group>"; };
+		5B1B5CCC2A13BF360030D407 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatService.swift; path = ../../../../../../ChatService.swift; sourceTree = "<group>"; };
+		5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverService.swift; path = ../../../../../../NaverService.swift; sourceTree = "<group>"; };
+		5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverRequestDTO.swift; path = ../../../../../../NaverRequestDTO.swift; sourceTree = "<group>"; };
+		5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverResponseDTO.swift; path = ../../../../../../NaverResponseDTO.swift; sourceTree = "<group>"; };
+		5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIEnvironment.swift; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Network/Util/APIEnvironment.swift"; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,9 +167,10 @@
 			files = (
 				5B82EF1929F96B8D009F8A08 /* RxSwift in Frameworks */,
 				5B82EF2229F96BFD009F8A08 /* Then in Frameworks */,
+				5B1B5CD82A13C1060030D407 /* Moya in Frameworks */,
 				5B82EF1C29F96BB6009F8A08 /* FSCalendar in Frameworks */,
+				5B1B5CDA2A13C1060030D407 /* RxMoya in Frameworks */,
 				5B82EF1729F96B8D009F8A08 /* RxCocoa in Frameworks */,
-				5B82EF1429F96B68009F8A08 /* Moya in Frameworks */,
 				5B82EF1F29F96BDB009F8A08 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,25 +201,45 @@
 			path = Literal;
 			sourceTree = "<group>";
 		};
-		5B1B5C382A10B4B40030D407 /* Entity */ = {
+		5B1B5CBE2A13BE040030D407 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B5CC02A13BEA80030D407 /* Util */,
+				5B1B5CBF2A13BEA10030D407 /* DTO */,
+				5B1B5CC12A13BEAB0030D407 /* OpenAPI */,
 			);
-			path = Entity;
+			path = Network;
 			sourceTree = "<group>";
 		};
-		5B1B5C392A10B4BD0030D407 /* UseCase */ = {
+		5B1B5CBF2A13BEA10030D407 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */,
+				5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */,
+				5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */,
+				5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */,
 			);
-			path = UseCase;
+			path = DTO;
 			sourceTree = "<group>";
 		};
-		5B1B5C3A2A10B4C70030D407 /* Interface */ = {
+		5B1B5CC02A13BEA80030D407 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B5CC42A13BEE50030D407 /* APIKey.swift */,
+				5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */,
 			);
-			path = Interface;
+			path = Util;
+			sourceTree = "<group>";
+		};
+		5B1B5CC12A13BEAB0030D407 /* OpenAPI */ = {
+			isa = PBXGroup;
+			children = (
+				5B1B5CC22A13BED10030D407 /* ChatAPI.swift */,
+				5B1B5CCC2A13BF360030D407 /* ChatService.swift */,
+				5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */,
+				5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */,
+			);
+			path = OpenAPI;
 			sourceTree = "<group>";
 		};
 		5B82EED629F96A2E009F8A08 = {
@@ -225,8 +267,7 @@
 			children = (
 				5B82EF2329F96C1C009F8A08 /* Application */,
 				5B82EF2729F96CFB009F8A08 /* Global */,
-				5B82EF2429F96CEC009F8A08 /* Domain */,
-				5B82EF2529F96CF1009F8A08 /* Data */,
+				5B1B5CBE2A13BE040030D407 /* Network */,
 				5B82EF2629F96CF4009F8A08 /* Presentation */,
 			);
 			path = Kevin;
@@ -257,24 +298,6 @@
 				5B82EEF029F96A32009F8A08 /* Info.plist */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		5B82EF2429F96CEC009F8A08 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				5B1B5C382A10B4B40030D407 /* Entity */,
-				5B1B5C3A2A10B4C70030D407 /* Interface */,
-				5B1B5C392A10B4BD0030D407 /* UseCase */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		5B82EF2529F96CF1009F8A08 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				5B82EF3229F96D93009F8A08 /* Network */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		5B82EF2629F96CF4009F8A08 /* Presentation */ = {
@@ -368,14 +391,6 @@
 				5BEA1CC729FF8C61000AD570 /* ViewModel */,
 			);
 			path = Analysis;
-			sourceTree = "<group>";
-		};
-		5B82EF3229F96D93009F8A08 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				5BEA1CEE29FFA7AC000AD570 /* Util */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		5B82EF3329F96D98009F8A08 /* Protocol */ = {
@@ -519,13 +534,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		5BEA1CEE29FFA7AC000AD570 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -543,12 +551,13 @@
 			);
 			name = Kevin;
 			packageProductDependencies = (
-				5B82EF1329F96B68009F8A08 /* Moya */,
 				5B82EF1629F96B8D009F8A08 /* RxCocoa */,
 				5B82EF1829F96B8D009F8A08 /* RxSwift */,
 				5B82EF1B29F96BB6009F8A08 /* FSCalendar */,
 				5B82EF1E29F96BDB009F8A08 /* SnapKit */,
 				5B82EF2129F96BFD009F8A08 /* Then */,
+				5B1B5CD72A13C1060030D407 /* Moya */,
+				5B1B5CD92A13C1060030D407 /* RxMoya */,
 			);
 			productName = Kevin;
 			productReference = 5B82EEDF29F96A2E009F8A08 /* Kevin.app */;
@@ -623,11 +632,11 @@
 			);
 			mainGroup = 5B82EED629F96A2E009F8A08;
 			packageReferences = (
-				5B82EF1229F96B68009F8A08 /* XCRemoteSwiftPackageReference "Moya" */,
 				5B82EF1529F96B8D009F8A08 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				5B82EF1A29F96BB6009F8A08 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				5B82EF1D29F96BDB009F8A08 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				5B82EF2029F96BFD009F8A08 /* XCRemoteSwiftPackageReference "Then" */,
+				5B1B5CD62A13C1060030D407 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 5B82EEE029F96A2E009F8A08 /* Products */;
 			projectDirPath = "";
@@ -686,32 +695,42 @@
 				5BEA1CED29FFA48C000AD570 /* SettingCoordinatorProtocol.swift in Sources */,
 				5B943FDF29FFF918003FE7CD /* AnalysisType.swift in Sources */,
 				5B11518729FBD67C00130CB0 /* CALayer+.swift in Sources */,
+				5B1B5CC72A13BF1D0030D407 /* ChatRequestDTO.swift in Sources */,
 				5B11518429FBD54200130CB0 /* UIView+.swift in Sources */,
+				5B1B5CCB2A13BF2F0030D407 /* NaverAPI.swift in Sources */,
+				5B1B5CD52A13BFCD0030D407 /* APIEnvironment.swift in Sources */,
 				5BAB2C332A0204C8002DEBDC /* KevinCardSideType.swift in Sources */,
 				5B11518D29FBD75E00130CB0 /* UILabel+.swift in Sources */,
 				5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */,
 				5BEA1CD529FF9220000AD570 /* MainCoordinator.swift in Sources */,
 				5BEA1CD229FF90B4000AD570 /* AppCoordinator.swift in Sources */,
 				5B11519729FE3B3B00130CB0 /* Image.swift in Sources */,
+				5B1B5CC32A13BED10030D407 /* ChatAPI.swift in Sources */,
 				5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */,
 				5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */,
 				5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */,
+				5B1B5CD12A13BF510030D407 /* NaverRequestDTO.swift in Sources */,
 				5B11518229FBD4F300130CB0 /* ReusableProtocol.swift in Sources */,
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
 				5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */,
+				5B1B5CC92A13BF280030D407 /* ChatResponseDTO.swift in Sources */,
 				5B11519329FBD96B00130CB0 /* Font.swift in Sources */,
 				5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */,
 				5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */,
 				5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */,
 				5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */,
 				5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */,
+				5B1B5CC52A13BEE50030D407 /* APIKey.swift in Sources */,
 				5B11519129FBD86500130CB0 /* UIButton+.swift in Sources */,
 				5BEA1CE629FF972C000AD570 /* DetailViewController.swift in Sources */,
+				5B1B5CCD2A13BF360030D407 /* ChatService.swift in Sources */,
+				5B1B5CCF2A13BF3E0030D407 /* NaverService.swift in Sources */,
 				5B11519529FC285700130CB0 /* Color.swift in Sources */,
 				5BEA1CD829FF92D8000AD570 /* SettingViewModel.swift in Sources */,
 				5B11518929FBD6E400130CB0 /* NSObject+.swift in Sources */,
 				5BEA1CC129FF8C01000AD570 /* WriteViewModel.swift in Sources */,
 				5B11518F29FBD78500130CB0 /* UITextView+.swift in Sources */,
+				5B1B5CD32A13BF5A0030D407 /* NaverResponseDTO.swift in Sources */,
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
 				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
 				5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */,
@@ -1053,7 +1072,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5B82EF1229F96B68009F8A08 /* XCRemoteSwiftPackageReference "Moya" */ = {
+		5B1B5CD62A13C1060030D407 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
@@ -1096,10 +1115,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5B82EF1329F96B68009F8A08 /* Moya */ = {
+		5B1B5CD72A13C1060030D407 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5B82EF1229F96B68009F8A08 /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 5B1B5CD62A13C1060030D407 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		5B1B5CD92A13C1060030D407 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B1B5CD62A13C1060030D407 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 		5B82EF1629F96B8D009F8A08 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
