@@ -56,7 +56,7 @@ final class KevinCardView: UIView {
         $0.backgroundColor = .clear
     }
     
-    private let analysisLabel = UILabel().then {
+    let analysisLabel = UILabel().then {
         $0.font = .kevinFont(type: .regular16)
         $0.textAlignment = .left
         $0.numberOfLines = 0

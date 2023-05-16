@@ -14,19 +14,27 @@ final class WriteViewModel: ViewModelType {
     
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
+    private let chatUseCase: ChatUseCase
+    private let naverUseCase: NaverUseCase
     
     private let dateSubject = BehaviorSubject<Date?>(value: nil).asObserver()
     private let textViewInvalid = BehaviorSubject<Bool>(value: false)
         
-    init(coordinator: MainCoordinator, date: Date?) {
+    init(coordinator: MainCoordinator,
+         chatUseCase: ChatUseCase,
+         naverUseCase: NaverUseCase,
+         date: Date?
+    ) {
         self.coordinator = coordinator
+        self.chatUseCase = chatUseCase
+        self.naverUseCase = naverUseCase
         self.dateSubject.onNext(date)
     }
     
     struct Input {
         let analysisButtonTap: ControlEvent<Void>
         let backButtonTap: ControlEvent<Void>
-        let textViewText: ControlProperty<String?>
+        let textViewText: Observable<String>
         let textDidBeginEditing: ControlEvent<()>
         let textDidEndEditing: ControlEvent<()>
         let textDidEndDragging: ControlEvent<()>
@@ -41,12 +49,15 @@ final class WriteViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        
-        // 서버연결 부분
+            
+        let content = input.textViewText
         input.analysisButtonTap
-            .subscribe { [weak self] _ in
+            .withLatestFrom(content)
+            .subscribe { [weak self] content in
                 guard let self else { return }
-                self.coordinator?.showAnalysisScreen(for: "", type: .positive)
+                // request 후 응답값을 분석창으로 넘겨야 함
+                self.chatUseCase.requestChat(content: content)
+                self.coordinator?.showAnalysisScreen(for: content, type: .positive)
             }
             .disposed(by: disposeBag)
         
@@ -63,7 +74,6 @@ final class WriteViewModel: ViewModelType {
             }
                 
         let textViewIsValid = input.textViewText
-            .orEmpty
             .map { value in
                 (value == StringLiteral.placeholder) ||
                 (value.trimmingCharacters(in: .whitespacesAndNewlines) == "")

@@ -14,10 +14,20 @@ final class AnalysisViewModel: ViewModelType {
     
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
+    private let chatUseCase: ChatUseCase
+    private let naverUseCase: NaverUseCase
     
-    init(coordinator: MainCoordinator, type: AnalysisType) {
+    init(coordinator: MainCoordinator,
+         chatUseCase: ChatUseCase,
+         naverUseCase: NaverUseCase,
+         type: AnalysisType,
+         content: String
+    ) {
         self.coordinator = coordinator
+        self.chatUseCase = chatUseCase
+        self.naverUseCase = naverUseCase
         self.type = type
+        self.content = content
     }
     
     struct Input {
@@ -28,9 +38,12 @@ final class AnalysisViewModel: ViewModelType {
     
     struct Output {
         let resultButtonTap: ControlEvent<Void>
+        let analysisText: Observable<String>
     }
     
     let type: AnalysisType
+    let resultContent = PublishSubject<String>()
+    let content: String
     
     func transform(_ input: Input) -> Output {
         input.backButtonTap
@@ -47,10 +60,11 @@ final class AnalysisViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        let resultButtonTap = input.resultButtonTap
-                    
+        resultContent.onNext(content)
+                            
         return Output(
-            resultButtonTap: resultButtonTap
+            resultButtonTap: input.resultButtonTap,
+            analysisText: resultContent.asObservable()
         )
     }
 }

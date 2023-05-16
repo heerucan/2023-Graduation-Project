@@ -54,7 +54,7 @@ final class WriteViewController: UIViewController {
         let input = WriteViewModel.Input(
             analysisButtonTap: naviBar.rightBarButton.rx.tap,
             backButtonTap: naviBar.leftBarButton.rx.tap,
-            textViewText: textView.rx.text,
+            textViewText: textView.rx.text.orEmpty.asObservable(),
             textDidBeginEditing: textView.rx.didBeginEditing,
             textDidEndEditing: textView.rx.didEndEditing,
             textDidEndDragging: textView.rx.didEndEditing

@@ -69,6 +69,11 @@ final class AnalysisViewController: UIViewController {
                 self.cardView.makeVibrate()
             }
             .disposed(by: disposeBag)
+        
+        output.analysisText
+            .bind(to: cardBackView.analysisLabel.rx.text)
+            .disposed(by: disposeBag)
+        
     }
 }
 

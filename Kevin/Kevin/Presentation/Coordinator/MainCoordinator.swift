@@ -34,7 +34,14 @@ final class MainCoordinator: Coordinator {
     
     // 특정 날짜를 인자로 받아 PostVC을 만들고 UINavigationController에 추가해서 화면에 보여준다.
     func showWriteScreen(forDate date: Date) {
-        let viewModel = WriteViewModel(coordinator: self, date: date)
+        let chatUseCase = ChatUseCaseImpl(repository: ChatRepositoryImpl())
+        let naverUseCase = NaverUseCaseImpl(repository: NaverRepositoryImpl())
+        let viewModel = WriteViewModel(
+            coordinator: self,
+            chatUseCase: chatUseCase,
+            naverUseCase: naverUseCase,
+            date: date
+        )
         let viewController = WriteViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -46,7 +53,15 @@ final class MainCoordinator: Coordinator {
     }
     
     func showAnalysisScreen(for content: String, type: AnalysisType) {
-        let viewModel = AnalysisViewModel(coordinator: self, type: type)
+        let chatUseCase = ChatUseCaseImpl(repository: ChatRepositoryImpl())
+        let naverUseCase = NaverUseCaseImpl(repository: NaverRepositoryImpl())
+        let viewModel = AnalysisViewModel(
+            coordinator: self,
+            chatUseCase: chatUseCase,
+            naverUseCase: naverUseCase,
+            type: type,
+            content: content
+        )
         let viewController = AnalysisViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
