@@ -24,18 +24,18 @@
 		5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11519E29FE3E0600130CB0 /* KevinCardView.swift */; };
 		5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */; };
 		5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5C3B2A10C7600030D407 /* Rx+.swift */; };
-		5B1B5CC32A13BED10030D407 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC22A13BED10030D407 /* ChatAPI.swift */; };
-		5B1B5CC52A13BEE50030D407 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC42A13BEE50030D407 /* APIKey.swift */; };
-		5B1B5CC72A13BF1D0030D407 /* ChatRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */; };
-		5B1B5CC92A13BF280030D407 /* ChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */; };
-		5B1B5CCB2A13BF2F0030D407 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */; };
-		5B1B5CCD2A13BF360030D407 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCC2A13BF360030D407 /* ChatService.swift */; };
-		5B1B5CCF2A13BF3E0030D407 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */; };
-		5B1B5CD12A13BF510030D407 /* NaverRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */; };
-		5B1B5CD32A13BF5A0030D407 /* NaverResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */; };
-		5B1B5CD52A13BFCD0030D407 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */; };
 		5B1B5CD82A13C1060030D407 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD72A13C1060030D407 /* Moya */; };
 		5B1B5CDA2A13C1060030D407 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD92A13C1060030D407 /* RxMoya */; };
+		5B1B5CDC2A13E3DF0030D407 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */; };
+		5B1B5CDE2A13E3EA0030D407 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */; };
+		5B1B5CE32A13E3F40030D407 /* ChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */; };
+		5B1B5CE42A13E3F40030D407 /* ChatRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */; };
+		5B1B5CE52A13E3F40030D407 /* NaverRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE12A13E3F40030D407 /* NaverRequestDTO.swift */; };
+		5B1B5CE62A13E3F40030D407 /* NaverResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE22A13E3F40030D407 /* NaverResponseDTO.swift */; };
+		5B1B5CEA2A13E4010030D407 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE72A13E4000030D407 /* ChatService.swift */; };
+		5B1B5CEB2A13E4010030D407 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE82A13E4000030D407 /* NaverAPI.swift */; };
+		5B1B5CEC2A13E4010030D407 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE92A13E4000030D407 /* NaverService.swift */; };
+		5B1B5CEE2A13E4200030D407 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CED2A13E4200030D407 /* ChatAPI.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -111,16 +111,16 @@
 		5B11519E29FE3E0600130CB0 /* KevinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardView.swift; sourceTree = "<group>"; };
 		5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5B1B5C3B2A10C7600030D407 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
-		5B1B5CC22A13BED10030D407 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatAPI.swift; path = ../../../../../../Documents/ChatAPI.swift; sourceTree = "<group>"; };
-		5B1B5CC42A13BEE50030D407 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIKey.swift; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Network/Util/APIKey.swift"; sourceTree = "<group>"; };
-		5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatRequestDTO.swift; path = ../../../../../../ChatRequestDTO.swift; sourceTree = "<group>"; };
-		5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatResponseDTO.swift; path = ../../../../../../ChatResponseDTO.swift; sourceTree = "<group>"; };
-		5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverAPI.swift; path = ../../../../../../NaverAPI.swift; sourceTree = "<group>"; };
-		5B1B5CCC2A13BF360030D407 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatService.swift; path = ../../../../../../ChatService.swift; sourceTree = "<group>"; };
-		5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverService.swift; path = ../../../../../../NaverService.swift; sourceTree = "<group>"; };
-		5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverRequestDTO.swift; path = ../../../../../../NaverRequestDTO.swift; sourceTree = "<group>"; };
-		5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NaverResponseDTO.swift; path = ../../../../../../NaverResponseDTO.swift; sourceTree = "<group>"; };
-		5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIEnvironment.swift; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Network/Util/APIEnvironment.swift"; sourceTree = "<group>"; };
+		5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatResponseDTO.swift; sourceTree = "<group>"; };
+		5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRequestDTO.swift; sourceTree = "<group>"; };
+		5B1B5CE12A13E3F40030D407 /* NaverRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverRequestDTO.swift; sourceTree = "<group>"; };
+		5B1B5CE22A13E3F40030D407 /* NaverResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverResponseDTO.swift; sourceTree = "<group>"; };
+		5B1B5CE72A13E4000030D407 /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		5B1B5CE82A13E4000030D407 /* NaverAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
+		5B1B5CE92A13E4000030D407 /* NaverService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverService.swift; sourceTree = "<group>"; };
+		5B1B5CED2A13E4200030D407 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,10 +214,10 @@
 		5B1B5CBF2A13BEA10030D407 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				5B1B5CC62A13BF1D0030D407 /* ChatRequestDTO.swift */,
-				5B1B5CC82A13BF280030D407 /* ChatResponseDTO.swift */,
-				5B1B5CD02A13BF510030D407 /* NaverRequestDTO.swift */,
-				5B1B5CD22A13BF5A0030D407 /* NaverResponseDTO.swift */,
+				5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */,
+				5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */,
+				5B1B5CE12A13E3F40030D407 /* NaverRequestDTO.swift */,
+				5B1B5CE22A13E3F40030D407 /* NaverResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -225,8 +225,8 @@
 		5B1B5CC02A13BEA80030D407 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				5B1B5CC42A13BEE50030D407 /* APIKey.swift */,
-				5B1B5CD42A13BFCD0030D407 /* APIEnvironment.swift */,
+				5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */,
+				5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -234,10 +234,10 @@
 		5B1B5CC12A13BEAB0030D407 /* OpenAPI */ = {
 			isa = PBXGroup;
 			children = (
-				5B1B5CC22A13BED10030D407 /* ChatAPI.swift */,
-				5B1B5CCC2A13BF360030D407 /* ChatService.swift */,
-				5B1B5CCA2A13BF2F0030D407 /* NaverAPI.swift */,
-				5B1B5CCE2A13BF3E0030D407 /* NaverService.swift */,
+				5B1B5CED2A13E4200030D407 /* ChatAPI.swift */,
+				5B1B5CE72A13E4000030D407 /* ChatService.swift */,
+				5B1B5CE82A13E4000030D407 /* NaverAPI.swift */,
+				5B1B5CE92A13E4000030D407 /* NaverService.swift */,
 			);
 			path = OpenAPI;
 			sourceTree = "<group>";
@@ -689,50 +689,50 @@
 				5BEA1CCA29FF8C94000AD570 /* SettingViewController.swift in Sources */,
 				5B11519929FE3C5700130CB0 /* MatrixLiteral.swift in Sources */,
 				5BEA1CD029FF9075000AD570 /* AppCoordinatorProtocol.swift in Sources */,
+				5B1B5CE42A13E3F40030D407 /* ChatRequestDTO.swift in Sources */,
 				5B943FE129FFFA0A003FE7CD /* KevinImageButton.swift in Sources */,
 				5BEA1CEB29FFA46D000AD570 /* MainCoordinatorProtocol.swift in Sources */,
 				5B11519F29FE3E0600130CB0 /* KevinCardView.swift in Sources */,
 				5BEA1CED29FFA48C000AD570 /* SettingCoordinatorProtocol.swift in Sources */,
 				5B943FDF29FFF918003FE7CD /* AnalysisType.swift in Sources */,
 				5B11518729FBD67C00130CB0 /* CALayer+.swift in Sources */,
-				5B1B5CC72A13BF1D0030D407 /* ChatRequestDTO.swift in Sources */,
 				5B11518429FBD54200130CB0 /* UIView+.swift in Sources */,
-				5B1B5CCB2A13BF2F0030D407 /* NaverAPI.swift in Sources */,
-				5B1B5CD52A13BFCD0030D407 /* APIEnvironment.swift in Sources */,
 				5BAB2C332A0204C8002DEBDC /* KevinCardSideType.swift in Sources */,
 				5B11518D29FBD75E00130CB0 /* UILabel+.swift in Sources */,
 				5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */,
 				5BEA1CD529FF9220000AD570 /* MainCoordinator.swift in Sources */,
 				5BEA1CD229FF90B4000AD570 /* AppCoordinator.swift in Sources */,
+				5B1B5CE62A13E3F40030D407 /* NaverResponseDTO.swift in Sources */,
 				5B11519729FE3B3B00130CB0 /* Image.swift in Sources */,
-				5B1B5CC32A13BED10030D407 /* ChatAPI.swift in Sources */,
 				5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */,
+				5B1B5CEE2A13E4200030D407 /* ChatAPI.swift in Sources */,
 				5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */,
 				5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */,
-				5B1B5CD12A13BF510030D407 /* NaverRequestDTO.swift in Sources */,
+				5B1B5CDE2A13E3EA0030D407 /* APIEnvironment.swift in Sources */,
+				5B1B5CE32A13E3F40030D407 /* ChatResponseDTO.swift in Sources */,
 				5B11518229FBD4F300130CB0 /* ReusableProtocol.swift in Sources */,
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
 				5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */,
-				5B1B5CC92A13BF280030D407 /* ChatResponseDTO.swift in Sources */,
 				5B11519329FBD96B00130CB0 /* Font.swift in Sources */,
 				5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */,
 				5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */,
+				5B1B5CEA2A13E4010030D407 /* ChatService.swift in Sources */,
 				5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */,
 				5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */,
+				5B1B5CEC2A13E4010030D407 /* NaverService.swift in Sources */,
 				5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */,
-				5B1B5CC52A13BEE50030D407 /* APIKey.swift in Sources */,
+				5B1B5CE52A13E3F40030D407 /* NaverRequestDTO.swift in Sources */,
 				5B11519129FBD86500130CB0 /* UIButton+.swift in Sources */,
 				5BEA1CE629FF972C000AD570 /* DetailViewController.swift in Sources */,
-				5B1B5CCD2A13BF360030D407 /* ChatService.swift in Sources */,
-				5B1B5CCF2A13BF3E0030D407 /* NaverService.swift in Sources */,
 				5B11519529FC285700130CB0 /* Color.swift in Sources */,
 				5BEA1CD829FF92D8000AD570 /* SettingViewModel.swift in Sources */,
 				5B11518929FBD6E400130CB0 /* NSObject+.swift in Sources */,
 				5BEA1CC129FF8C01000AD570 /* WriteViewModel.swift in Sources */,
 				5B11518F29FBD78500130CB0 /* UITextView+.swift in Sources */,
-				5B1B5CD32A13BF5A0030D407 /* NaverResponseDTO.swift in Sources */,
+				5B1B5CDC2A13E3DF0030D407 /* APIKey.swift in Sources */,
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
 				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
+				5B1B5CEB2A13E4010030D407 /* NaverAPI.swift in Sources */,
 				5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */,
 				5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */,
 			);
