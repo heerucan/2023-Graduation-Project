@@ -15,43 +15,40 @@ final class WriteViewModel: ViewModelType {
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
     
-    private let dateSubject = BehaviorSubject<Date?>(value: nil).asObserver()
-    private let textViewInvalid = BehaviorSubject<Bool>(value: false)
+    private let dateRelay = BehaviorRelay<Date?>(value: nil)
+    private let textInvalidRelay = BehaviorRelay<Bool>(value: false)
     private let typeRelay = BehaviorRelay<AnalysisType>(value: .neutral)
-    private var chatResponse = PublishSubject<ChatResponseDTO>()
-    private var naverResponse = PublishSubject<NaverResponseDTO>()
-    private var chatFail = PublishSubject<Error>()
+    private let loadingRelay = BehaviorRelay<Bool>(value: false)
     
-        
+    private let chatResponse = PublishRelay<ChatResponseDTO>()
+    private let naverResponse = PublishRelay<NaverResponseDTO>()
+    private let networkError = PublishRelay<Error>()
+    
     init(coordinator: MainCoordinator, date: Date?) {
         self.coordinator = coordinator
-        self.dateSubject.onNext(date)
+        self.dateRelay.accept(date)
     }
     
     struct Input {
         let analysisButtonTap: ControlEvent<Void>
         let backButtonTap: ControlEvent<Void>
         let textViewText: ControlProperty<String?>
-        let textDidBeginEditing: ControlEvent<()>
-        let textDidEndEditing: ControlEvent<()>
-        let textDidEndDragging: ControlEvent<()>
     }
     
     struct Output {
-        let dateLabelText: Observable<String>
-        let textViewIsValid: Observable<Bool>
-        let didBeginEditing: ControlEvent<()>
-        let didEndEditing: ControlEvent<()>
-        let didEndDragging: ControlEvent<()>
+        let dateText: Observable<String>
+        let isValidText: Driver<Bool>
+        let isLoading: Driver<Bool>
     }
     
     func transform(_ input: Input) -> Output {
-        
+                
         input.analysisButtonTap
             .withLatestFrom(input.textViewText.orEmpty)
             .throttle(.milliseconds(500), latest: false, scheduler: MainScheduler.instance)
             .subscribe { [weak self] text in
                 guard let self else { return }
+                self.loadingRelay.accept(true)
                 self.requestNaverAnalysis(text: text)
             }
             .disposed(by: disposeBag)
@@ -66,40 +63,30 @@ final class WriteViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        let date = dateSubject
+        let date = dateRelay
             .map { date -> String in
-                self.changeDateFormatter(date)
+                DateFormatterUtil.formateDate(date)
             }
                 
-        let textViewIsValid = input.textViewText
+        let isValidText = input.textViewText
             .orEmpty
             .map { value in
                 (value == StringLiteral.placeholder) ||
                 (value.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-                ? true : false
             }
+            .asDriver(onErrorJustReturn: false)
         
-        let didBeginEditing = input.textDidBeginEditing
-        let didEndEditing = input.textDidEndEditing
-        let didEndDragging = input.textDidEndDragging
+        let isLoading = loadingRelay.asDriver(onErrorJustReturn: false)
                 
         return Output(
-            dateLabelText: date,
-            textViewIsValid: textViewIsValid,
-            didBeginEditing: didBeginEditing,
-            didEndEditing: didEndEditing,
-            didEndDragging: didEndDragging
+            dateText: date,
+            isValidText: isValidText,
+            isLoading: isLoading
         )
     }
 }
 
 extension WriteViewModel {
-    private func changeDateFormatter(_ date: Date?) -> String {
-        guard let date = date else { return "" }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = StringLiteral.Calendar.fullDateFormat
-        return dateFormatter.string(from: date)
-    }
     
     private func requestNaverAnalysis(text: String) {
         NaverService.shared.requestNaverAnalysis(text: text)
@@ -107,7 +94,7 @@ extension WriteViewModel {
                 guard let self else { return }
                 let type = AnalysisType(rawValue: response.document.sentiment) ?? .neutral
                 
-                self.naverResponse.onNext(response)
+                self.naverResponse.accept(response)
                 self.typeRelay.accept(type)
                 
                 // TODO: - 챗지피티한테 보낼 것은 다듬어서 전달
@@ -115,8 +102,8 @@ extension WriteViewModel {
                 self.requestChatGPT(content: "행복한 하루였어")
                 
             }, onError: { error in
-                // TODO: - 에러 처리
-                print(error.localizedDescription)
+                self.networkError.accept(error)
+                self.loadingRelay.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -125,20 +112,18 @@ extension WriteViewModel {
         ChatService.shared.requestChat(content: content)
             .subscribe(onNext: { [weak self] response in
                 guard let self else { return }
-                let type = AnalysisType(rawValue: typeRelay.value.rawValue) ?? .neutral
-                
+                let type = AnalysisType(rawValue: self.typeRelay.value.rawValue) ?? .neutral
+
                 // TODO: - 네이버 응답결과 퍼센테이지도 전달해야함
 //                self.naverResponse.values
                 
-                self.chatResponse.onNext(response)
-                self.coordinator?.showAnalysisScreen(
-                    for: response.resultText,
-                    type: type)
-                                
+                self.chatResponse.accept(response)
+                self.loadingRelay.accept(false)
+                self.coordinator?.showAnalysisScreen(for: response.resultText, type: type)
+                
             }, onError: { error in
-                // TODO: - 에러 처리
-                print(error.localizedDescription)
-                self.chatFail.onNext(error)
+                self.networkError.accept(error)
+                self.loadingRelay.accept(false)
             })
             .disposed(by: disposeBag)
     }

@@ -17,6 +17,7 @@ final class WriteViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: WriteViewModel
     
+    private let loadingIndicator = UIActivityIndicatorView()
     private let naviBar = KevinNavigationBar(type: .write)
     private let dateLabel = UILabel().then {
         $0.font = .kevinFont(type: .medium14)
@@ -54,27 +55,28 @@ final class WriteViewController: UIViewController {
         let input = WriteViewModel.Input(
             analysisButtonTap: naviBar.rightBarButton.rx.tap,
             backButtonTap: naviBar.leftBarButton.rx.tap,
-            textViewText: textView.rx.text,
-            textDidBeginEditing: textView.rx.didBeginEditing,
-            textDidEndEditing: textView.rx.didEndEditing,
-            textDidEndDragging: textView.rx.didEndEditing
+            textViewText: textView.rx.text
         )
         let output = viewModel.transform(input)
         
-        output.dateLabelText
+        output.dateText
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.textViewIsValid
-            .bind(to: naviBar.rightBarButton.rx.isHighlighted)
+        output.isValidText
+            .drive(naviBar.rightBarButton.rx.isHighlighted)
             .disposed(by: disposeBag)
         
-        output.textViewIsValid
+        output.isValidText
             .map { !$0 }
-            .bind(to: naviBar.rightBarButton.rx.isEnabled)
+            .drive(naviBar.rightBarButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        output.didBeginEditing
+        output.isLoading
+            .drive(loadingIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        textView.rx.didBeginEditing
             .subscribe { [weak self] _ in
                 guard let self else { return }
                 if self.textView.text == StringLiteral.placeholder {
@@ -84,7 +86,7 @@ final class WriteViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        output.didEndEditing
+        textView.rx.didEndEditing
             .subscribe { [weak self] _ in
                 guard let self else { return }
                 if self.textView.text.isEmpty {
@@ -94,7 +96,7 @@ final class WriteViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        output.didEndDragging
+        textView.rx.didEndDragging
             .subscribe { [weak self] _ in
                 guard let self else { return }
                 self.textView.resignFirstResponder()
@@ -109,7 +111,7 @@ extension WriteViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviBar, dateLabel, textView])
+        view.addSubviews([naviBar, dateLabel, textView, loadingIndicator])
         
         naviBar.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(49)
@@ -126,6 +128,10 @@ extension WriteViewController {
             make.leading.equalToSuperview().inset(14)
             make.trailing.equalToSuperview().inset(20)
             make.height.equalTo(350)
+        }
+        
+        loadingIndicator.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }
