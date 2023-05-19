@@ -8,19 +8,19 @@
 import Foundation
 
 struct ResultModel {
-    let percent: Confidence
+    let percentage: Confidence?
     let type: AnalysisType
     let date: String
     let content: String
     
-    init(percent: Confidence,
+    init(percentage: Confidence?,
          type: AnalysisType,
-         date: Date,
+         date: String,
          content: String
     ) {
-        self.percent = percent
+        self.percentage = percentage
         self.type = AnalysisType(rawValue: type.rawValue) ?? .neutral
-        self.date = DateFormatterUtil.format(date)
+        self.date = date
         self.content = content
     }
 }
