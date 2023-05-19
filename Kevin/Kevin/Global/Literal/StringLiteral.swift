@@ -22,8 +22,6 @@ enum StringLiteral {
     enum Calendar {
         static let month = "월"
         static let day = "일"
-        static let dateFormat = "YYYY년 M월"
-        static let fullDateFormat = "yyyy년 M월 d일"
     }
     
     enum Alert {

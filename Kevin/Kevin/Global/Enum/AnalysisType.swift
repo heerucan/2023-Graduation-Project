@@ -24,14 +24,25 @@ enum AnalysisType: String {
         }
     }
     
-    var sticker: UIImage? {
+    var sticker: UIImage! {
         switch self {
         case .positive:
-            return Image.green
+            return Image.positive
         case .negative:
-            return Image.pink
+            return Image.negative
         case .neutral:
-            return Image.blue
+            return Image.neutral
+        }
+    }
+    
+    var smallSticker: UIImage! {
+        switch self {
+        case .positive:
+            return Image.Sticker.positive
+        case .negative:
+            return Image.Sticker.negative
+        case .neutral:
+            return Image.Sticker.neutral
         }
     }
     
