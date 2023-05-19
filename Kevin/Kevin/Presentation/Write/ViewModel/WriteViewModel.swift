@@ -17,14 +17,15 @@ final class WriteViewModel: ViewModelType {
     
     private let dateRelay = BehaviorRelay<Date?>(value: nil)
     private let textInvalidRelay = BehaviorRelay<Bool>(value: false)
-    private let typeRelay = BehaviorRelay<AnalysisType>(value: .neutral)
     private let loadingRelay = BehaviorRelay<Bool>(value: false)
-    
-    private let chatResponse = PublishRelay<ChatResponseDTO>()
-    private let naverResponse = PublishRelay<NaverResponseDTO>()
+    private let typeRelay = BehaviorRelay<AnalysisType>(value: .neutral)
+    private let percentageRelay = BehaviorRelay<Confidence?>(value: nil)
+
     private let networkError = PublishRelay<Error>()
-    
-    init(coordinator: MainCoordinator, date: Date?) {
+        
+    init(coordinator: MainCoordinator,
+         date: Date?
+    ) {
         self.coordinator = coordinator
         self.dateRelay.accept(date)
     }
@@ -65,7 +66,7 @@ final class WriteViewModel: ViewModelType {
         
         let date = dateRelay
             .map { date -> String in
-                DateFormatterUtil.formateDate(date)
+                DateFormatterUtil.format(date)
             }
                 
         let isValidText = input.textViewText
@@ -77,7 +78,7 @@ final class WriteViewModel: ViewModelType {
             .asDriver(onErrorJustReturn: false)
         
         let isLoading = loadingRelay.asDriver(onErrorJustReturn: false)
-                
+                        
         return Output(
             dateText: date,
             isValidText: isValidText,
@@ -87,19 +88,16 @@ final class WriteViewModel: ViewModelType {
 }
 
 extension WriteViewModel {
-    
     private func requestNaverAnalysis(text: String) {
         NaverService.shared.requestNaverAnalysis(text: text)
             .subscribe(onNext: { [weak self] response in
-                guard let self else { return }
+                guard let self = self else { return }
                 let type = AnalysisType(rawValue: response.document.sentiment) ?? .neutral
+                let content = "나의 오늘 하루 기록은 \(text)와 같고, \(text)에 대한 감정분석 결과, \(response.document.sentiment)이고, 긍정비율은 \(response.document.confidence.positive), 부정비율은 \(response.document.confidence.negative), 중립비율은 \(response.document.confidence.neutral)이야. 이에 대해 너가 감정분석 결과 퍼센테이지와 최종 감정분석을 말해주고, 감정에 대해 객관적인 응원이나 격려 또는 조언의 말을 친구한테 말하듯이 말해줘."
                 
-                self.naverResponse.accept(response)
                 self.typeRelay.accept(type)
-                
-                // TODO: - 챗지피티한테 보낼 것은 다듬어서 전달
-//                let content =
-                self.requestChatGPT(content: "행복한 하루였어")
+                self.percentageRelay.accept(response.document.confidence)
+                self.requestChatGPT(content: content)
                 
             }, onError: { error in
                 self.networkError.accept(error)
@@ -111,15 +109,16 @@ extension WriteViewModel {
     private func requestChatGPT(content: String) {
         ChatService.shared.requestChat(content: content)
             .subscribe(onNext: { [weak self] response in
-                guard let self else { return }
-                let type = AnalysisType(rawValue: self.typeRelay.value.rawValue) ?? .neutral
-
-                // TODO: - 네이버 응답결과 퍼센테이지도 전달해야함
-//                self.naverResponse.values
-                
-                self.chatResponse.accept(response)
+                guard let self = self else { return }
                 self.loadingRelay.accept(false)
-                self.coordinator?.showAnalysisScreen(for: response.resultText, type: type)
+                let data = ResultModel(
+                    percentage: self.percentageRelay.value,
+                    type: self.typeRelay.value,
+                    date: DateFormatterUtil.format(self.dateRelay.value, .fullSlash),
+                    content: response.resultText
+                )
+                self.coordinator?.showAnalysisScreen(data: data)
+                self.loadingRelay.accept(true)
                 
             }, onError: { error in
                 self.networkError.accept(error)
