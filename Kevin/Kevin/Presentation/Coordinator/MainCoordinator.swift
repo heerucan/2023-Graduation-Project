@@ -17,40 +17,32 @@ final class MainCoordinator: Coordinator {
     weak var delegate: CoordinatorFinishDelegate?
     var childCoordinators = [Coordinator]()
     var type: CoordinatorType = .main
-    // 화면 전환을 위해 사용하는 UINavigationController 객체이다.
     private let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-    // MainCoordinator 객체의 작업을 시작하는 메소드
-    // MainVC 객체를 만들고, UINavigationController에 추가하여 화면에 보여준다.
+
     func start() {
         let viewModel = MainViewModel(coordinator: self)
         let viewController = MainViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    // 특정 날짜를 인자로 받아 PostVC을 만들고 UINavigationController에 추가해서 화면에 보여준다.
-    func showWriteScreen(forDate date: Date) {
+    func showWriteScreen(date: Date) {
         let viewModel = WriteViewModel(coordinator: self, date: date)
         let viewController = WriteViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showDetailScreen(for content: String) {
+    func showDetailScreen(data: ResultModel) {
         let viewModel = DetailViewModel(coordinator: self)
         let viewController = DetailViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showAnalysisScreen(for content: String, type: AnalysisType) {
-        let viewModel = AnalysisViewModel(
-            coordinator: self,
-            type: type,
-            content: content
-        )
+    func showAnalysisScreen(data: ResultModel) {
+        let viewModel = AnalysisViewModel(coordinator: self, data: data)
         let viewController = AnalysisViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -62,9 +54,11 @@ final class MainCoordinator: Coordinator {
         childCoordinators.append(settingCoordinator)
     }
     
-    func popRootViewController() {
+    func popRootViewController(date: String, type: AnalysisType) {
+        if let rootviewController = navigationController.viewControllers.first as? MainViewController {
+            rootviewController.imageDictinoary.append([date: type.smallSticker])
+        }
         navigationController.popToRootViewController(animated: true)
-        navigationController.setNavigationBarHidden(true, animated: false)
     }
     
     func showAlert(title: String, message: String) {
