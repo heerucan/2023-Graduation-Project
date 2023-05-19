@@ -77,6 +77,14 @@ final class AnalysisViewController: UIViewController {
             .map { $0.content }
             .bind(to: cardBackView.analysisLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        output.resultData
+            .compactMap { $0?.percentage }
+            .bind { [weak self] percentage in
+                guard let self = self else { return }
+                self.cardFrontView.percentage = percentage
+            }
+            .disposed(by: disposeBag)
                         
         tapGesture.rx.event
             .bind { [weak self] _ in

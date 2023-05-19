@@ -16,15 +16,15 @@ final class AnalysisViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     let type: AnalysisType
-    private let contentRelay = BehaviorRelay<String>(value: "")
+    private let dataRelay = BehaviorRelay<ResultModel?>(value: nil)
     
     init(coordinator: MainCoordinator,
-         type: AnalysisType,
-         content: String
+         data: ResultModel,
+         type: AnalysisType
     ) {
         self.coordinator = coordinator
+        self.dataRelay.accept(data)
         self.type = type
-        self.contentRelay.accept(content)
     }
     
     struct Input {
@@ -35,8 +35,7 @@ final class AnalysisViewModel: ViewModelType {
     
     struct Output {
         let resultButtonTap: ControlEvent<Void>
-//        let percentageText: BehaviorRelay<String>
-        let analysisText: BehaviorRelay<String>
+        let resultData: Observable<ResultModel?>
     }
     
     func transform(_ input: Input) -> Output {
@@ -46,24 +45,25 @@ final class AnalysisViewModel: ViewModelType {
                 self.coordinator?.finish()
             }
             .disposed(by: disposeBag)
-        
+
         input.comfirmButtonTap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe { [weak self] _ in
                 guard let self else { return }
-                self.coordinator?.popRootViewController()
+                self.coordinator?.popRootViewController(
+                    date: dataRelay.value!.date,
+                    type: AnalysisType(rawValue: dataRelay.value!.type.rawValue) ?? .negative
+                )
             }
             .disposed(by: disposeBag)
         
         let resultButtonTap = input.resultButtonTap
-        let analysisText = contentRelay
         
-        print("분석뷰모델 gpt 응답 ->> ", contentRelay.value)
-                    
+        let resultData = Observable.just(dataRelay.value).asObservable().share()
+                                    
         return Output(
             resultButtonTap: resultButtonTap,
-//            percentageText: <#T##BehaviorRelay<String>#>,
-            analysisText: analysisText
+            resultData: resultData
         )
     }
 }

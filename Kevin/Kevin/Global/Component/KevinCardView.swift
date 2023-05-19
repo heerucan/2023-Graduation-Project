@@ -15,9 +15,15 @@ final class KevinCardView: UIView {
     private var type: AnalysisType = .positive
     private var cardSide: KevinCardSideType = .back
     
-    private var date: String = "오늘의 감정" {
+    var date: String = "오늘의 감정" {
         didSet {
-            topLabel.text = date + "의 감정"
+            topLabel.text = date.prefix(7).suffix(2) + "월 " + date.suffix(2) + "일의 감정"
+        }
+    }
+    
+    var percentage: Confidence = Confidence(neutral: 0, positive: 0, negative: 0) {
+        didSet {
+            percentageLabel.text = doubleToString(percentage)
         }
     }
     
@@ -27,19 +33,17 @@ final class KevinCardView: UIView {
     }
     
     private let topLabel = UILabel().then {
-        $0.text = "4월 22일의 감정"
         $0.textColor = .white
         $0.font = .kevinFont(type: .semibold15)
         $0.textAlignment = .center
     }
     
     private let stickerImageView = UIImageView().then {
-        $0.image = Image.green
+        $0.image = Image.positive
         $0.contentMode = .scaleAspectFill
     }
     
-    let percentageLabel = UILabel().then {
-        $0.text = "긍정 98% 부정 2%"
+    private let percentageLabel = UILabel().then {
         $0.textColor = .black
         $0.font = .kevinFont(type: .medium18)
         $0.textAlignment = .center
@@ -61,7 +65,6 @@ final class KevinCardView: UIView {
         $0.textAlignment = .left
         $0.numberOfLines = 0
         $0.textColor = .black
-        $0.text = "네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이네이버 감정분석API 결과에 따르면, 해당 문장 <오늘 옷을 사서 기분이 좋았어>는 거의 완전히 긍정적인 감정을 담고 있습니다. 긍정 비율이 99.9%로 매우 높고, 부정 비율은 0.03%로 아주 낮습니다. 중립 비율도 0.07%로 매우 낮기 때문에, 이 문장은 거의 완전히 긍정적인 감정을 나타내고 있다고 해석할 수 있습니다.\n\n당신이 기분 좋은 일을 경험했다는 것은 좋은 소식입니다. 이렇게 작은 일이"
     }
     
     init(type: AnalysisType, side: KevinCardSideType) {
@@ -148,5 +151,21 @@ final class KevinCardView: UIView {
         animation.duration = 1.0
         animation.repeatCount = .infinity
         self.layer.add(animation, forKey: "updown")
+    }
+    
+    private func doubleToString(_ percentage: Confidence) -> String {
+        let confidence = [percentage.positive, percentage.negative, percentage.neutral]
+        let index = confidence.firstIndex(of: confidence.max()!)
+        let emotion = round(confidence.max()!*100)/100
+        var emotionKor = ""
+        switch index {
+        case 0:
+            emotionKor = "긍정"
+        case 1:
+            emotionKor = "부정"
+        default:
+            emotionKor = "중립"
+        }
+        return emotionKor + "적인 감정, \(emotion)%"
     }
 }
