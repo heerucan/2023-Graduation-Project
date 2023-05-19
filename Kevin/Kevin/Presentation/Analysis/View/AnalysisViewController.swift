@@ -22,11 +22,12 @@ final class AnalysisViewController: UIViewController {
     private let anoterButton = KevinImageButton()
     private let tapGesture = UITapGestureRecognizer()
     private let cardView = UIView()
-    private lazy var cardFrontView = KevinCardView(type: viewModel.type, side: .front)
-    private lazy var cardBackView = KevinCardView(type: viewModel.type, side: .back)
+    private lazy var cardFrontView = KevinCardView(side: .front)
+    private lazy var cardBackView = KevinCardView(side: .back)
     private let shareButton = KevinButton(type: .share)
     private let resultButton = KevinButton(type: .result)
-    
+    private let cell = CAEmitterCell()
+
     init(viewModel: AnalysisViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -85,6 +86,18 @@ final class AnalysisViewController: UIViewController {
                 self.cardFrontView.percentage = percentage
             }
             .disposed(by: disposeBag)
+        
+        output.resultData
+            .compactMap { $0?.type }
+            .bind { [weak self] type in
+                guard let self = self else { return }
+                self.backView.image = type.back
+                self.resultButton.backgroundColor = type.color
+                self.cardFrontView.type = type
+                self.cardBackView.type = type
+                self.cell.contents = type.sticker?.cgImage
+            }
+            .disposed(by: disposeBag)
                         
         tapGesture.rx.event
             .bind { [weak self] _ in
@@ -116,7 +129,6 @@ extension AnalysisViewController {
             y: tapGesture.location(in: view).y
         )
         
-        let cell = CAEmitterCell()
         cell.birthRate = 10 // 파티클 개수
         cell.lifetime = 3 // 파티클 수명
         cell.lifetimeRange = 2
@@ -128,7 +140,6 @@ extension AnalysisViewController {
         cell.scale = 0.1 // 원래크기의 1/10을 곱함
         cell.scaleRange = 0.03 // 크기 범주
         cell.yAcceleration = 1400 // 양수는 중력적용, 음수는 위로 날아감, 값만큼 위로 올라가다가 내려감
-        cell.contents = viewModel.type.sticker?.cgImage
         
         emitterLayer.emitterCells = [cell]
         view.layer.addSublayer(emitterLayer)
@@ -143,8 +154,6 @@ extension AnalysisViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
         backView.contentMode = .scaleAspectFill
-        backView.image = viewModel.type.back
-        resultButton.backgroundColor = viewModel.type.color
         cardBackView.isHidden = true
         cardView.addGestureRecognizer(tapGesture)
     }

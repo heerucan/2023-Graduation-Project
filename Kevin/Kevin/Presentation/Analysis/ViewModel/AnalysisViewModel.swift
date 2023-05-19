@@ -15,16 +15,13 @@ final class AnalysisViewModel: ViewModelType {
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
     
-    let type: AnalysisType
     private let dataRelay = BehaviorRelay<ResultModel?>(value: nil)
     
     init(coordinator: MainCoordinator,
-         data: ResultModel,
-         type: AnalysisType
+         data: ResultModel
     ) {
         self.coordinator = coordinator
         self.dataRelay.accept(data)
-        self.type = type
     }
     
     struct Input {

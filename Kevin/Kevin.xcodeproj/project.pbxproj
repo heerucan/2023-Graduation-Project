@@ -37,6 +37,7 @@
 		5B1B5CEC2A13E4010030D407 /* NaverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE92A13E4000030D407 /* NaverService.swift */; };
 		5B1B5CEE2A13E4200030D407 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CED2A13E4200030D407 /* ChatAPI.swift */; };
 		5B1B5CF02A1418160030D407 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CEF2A1418160030D407 /* DateFormatter+.swift */; };
+		5B1B5CF22A154F060030D407 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CF12A154F060030D407 /* ResultModel.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		5B1B5CE92A13E4000030D407 /* NaverService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaverService.swift; sourceTree = "<group>"; };
 		5B1B5CED2A13E4200030D407 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		5B1B5CEF2A1418160030D407 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		5B1B5CF12A154F060030D407 /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		5B1B5CBF2A13BEA10030D407 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B5CF12A154F060030D407 /* ResultModel.swift */,
 				5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */,
 				5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */,
 				5B1B5CE12A13E3F40030D407 /* NaverRequestDTO.swift */,
@@ -722,6 +725,7 @@
 				5B1B5CEA2A13E4010030D407 /* ChatService.swift in Sources */,
 				5BEA1CB929FF8BAC000AD570 /* MainViewModel.swift in Sources */,
 				5BEA1CF529FFB8F8000AD570 /* KevinNavigationBar.swift in Sources */,
+				5B1B5CF22A154F060030D407 /* ResultModel.swift in Sources */,
 				5B1B5CEC2A13E4010030D407 /* NaverService.swift in Sources */,
 				5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */,
 				5B1B5CE52A13E3F40030D407 /* NaverRequestDTO.swift in Sources */,

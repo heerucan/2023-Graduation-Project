@@ -12,8 +12,14 @@ import Then
 
 final class KevinCardView: UIView {
     
-    private var type: AnalysisType = .positive
     private var cardSide: KevinCardSideType = .back
+    
+    var type: AnalysisType = .positive {
+        didSet {
+            topView.backgroundColor = type.color
+            stickerImageView.image = type.sticker
+        }
+    }
     
     var date: String = "오늘의 감정" {
         didSet {
@@ -67,8 +73,7 @@ final class KevinCardView: UIView {
         $0.textColor = .black
     }
     
-    init(type: AnalysisType, side: KevinCardSideType) {
-        self.type = type
+    init(side: KevinCardSideType) {
         self.cardSide = side
         super.init(frame: .zero)
         setUI()
@@ -84,8 +89,6 @@ final class KevinCardView: UIView {
         self.makeCorner()
         self.layer.applyShadow()
         self.backgroundColor = .white.withAlphaComponent(0.5)
-        topView.backgroundColor = type.color
-        stickerImageView.image = type.sticker
         analysisLabel.setLineSpacing()
     }
     
