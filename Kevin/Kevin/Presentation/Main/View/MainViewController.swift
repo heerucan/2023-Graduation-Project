@@ -18,6 +18,8 @@ final class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: MainViewModel
     
+    var imageDictinoary: [[String: UIImage]] = []
+    
     private let naviBar = KevinNavigationBar(type: .main)
     
     private let topTitleLabel = UILabel().then {
@@ -46,6 +48,11 @@ final class MainViewController: UIViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendar.reloadData()
+    }
+    
     private func bind() {
         let input = MainViewModel.Input(
             settingButtonDidTap: naviBar.rightBarButton.rx.tap,
@@ -66,15 +73,15 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         calendar.layoutSubviews()
     }
     
-    /// 날짜 선택 시 화면전환
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        viewModel.selectedDate.accept(date)
-    }
-    
-    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-        let cell = calendar.dequeueReusableCell(withIdentifier: CalendarCell.className, for: date, at: position)
-        as! CalendarCell
-        return cell
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        for dict in imageDictinoary {
+            if let dateString = dict.keys.first, let image = dict[dateString] {
+                if dateString == DateFormatterUtil.format(date, .fullSlash) {
+                    return image
+                }
+            }
+        }
+        return nil
     }
 }
 
@@ -117,7 +124,7 @@ extension MainViewController {
         calendar.allowsSelection = true
         calendar.allowsMultipleSelection = false
 
-        calendar.appearance.headerDateFormat = StringLiteral.Calendar.dateFormat
+        calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleOffset = CGPoint(x: -80, y: 0)
         calendar.appearance.headerTitleAlignment = .left
         calendar.appearance.headerTitleFont = .kevinFont(type: .medium16)

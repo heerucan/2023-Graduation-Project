@@ -25,7 +25,6 @@ final class CalendarCell: FSCalendarCell {
     }
     
     private func setUI() {
-//        stickerView.image = Image.green
         stickerView.frame = bounds
         stickerView.contentMode = .scaleAspectFit
     }
