@@ -33,7 +33,7 @@ extension UIColor {
     }
     
     @nonobjc class var blue100: UIColor {
-        return UIColor(red: 0.027, green: 0.631, blue: 0.384, alpha: 1)
+        return UIColor(red: 0.051, green: 0.6, blue: 1, alpha: 1)
     }
     
     @nonobjc class var blue200: UIColor {
@@ -42,5 +42,9 @@ extension UIColor {
     
     @nonobjc class var white: UIColor {
         return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
+    @nonobjc class var yellow100: UIColor {
+        return UIColor(red: 1, green: 0.805, blue: 0.112, alpha: 1)
     }
 }
