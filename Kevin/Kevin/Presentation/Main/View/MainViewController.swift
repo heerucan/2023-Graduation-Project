@@ -134,7 +134,11 @@ extension MainViewController {
         calendar.appearance.weekdayTextColor = .black
         calendar.appearance.titleDefaultColor = .black
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.selectionColor = .pink100
-        calendar.appearance.titleSelectionColor = .white
+        
+        calendar.appearance.todayColor = .black
+        calendar.appearance.titleTodayColor = .white        
+        calendar.appearance.selectionColor = .yellow100
+        calendar.appearance.borderSelectionColor = .black
+        calendar.appearance.titleSelectionColor = .black
     }
 }
