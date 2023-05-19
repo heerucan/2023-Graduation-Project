@@ -61,21 +61,30 @@ final class AnalysisViewController: UIViewController {
                 self.makeVibrate()
             })
             .disposed(by: disposeBag)
-                
-        output.analysisText
-            .bind(to: cardBackView.analysisLabel.rx.text)
+        
+        output.resultData
+            .compactMap { $0 }
+            .map { $0.date }
+            .bind(onNext: { [weak self] date in
+                guard let self = self else { return }
+                self.cardFrontView.date = date
+                self.cardBackView.date = date
+            })
             .disposed(by: disposeBag)
         
-        
+        output.resultData
+            .compactMap { $0 }
+            .map { $0.content }
+            .bind(to: cardBackView.analysisLabel.rx.text)
+            .disposed(by: disposeBag)
+                        
         tapGesture.rx.event
             .bind { [weak self] _ in
                 guard let self = self else { return }
                 self.setEmitterLayer()
                 self.cardView.makeVibrate()
             }
-            .disposed(by: disposeBag)
-        
-        
+            .disposed(by: disposeBag)        
     }
 }
 
@@ -100,7 +109,7 @@ extension AnalysisViewController {
         )
         
         let cell = CAEmitterCell()
-        cell.birthRate = 18 // 파티클 개수
+        cell.birthRate = 10 // 파티클 개수
         cell.lifetime = 3 // 파티클 수명
         cell.lifetimeRange = 2
         cell.velocity = 700 // 속도, 높을수록 더 멀리, 빠르게 방출
