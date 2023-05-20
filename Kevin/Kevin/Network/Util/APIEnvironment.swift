@@ -15,7 +15,7 @@ enum APIEnvironment {
     var url: URL {
         switch self {
         case .base:
-            return URL(string: "http://54.180.123.11/")!
+            return URL(string: "http://13.209.77.135/")!
         case .naver:
             return URL(string: "https://naveropenapi.apigw.ntruss.com/sentiment-analysis/v1/")!
         case .chat:
