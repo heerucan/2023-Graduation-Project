@@ -18,7 +18,7 @@ final class WriteViewController: UIViewController {
     private let viewModel: WriteViewModel
     
     private let loadingIndicator = UIActivityIndicatorView()
-    private let naviBar = KevinNavigationBar(type: .write)
+    private let naviBar = KevinNavigationBar()
     private let dateLabel = UILabel().then {
         $0.font = .kevinFont(type: .medium14)
         $0.textColor = .black
@@ -29,6 +29,7 @@ final class WriteViewController: UIViewController {
         $0.font = .kevinFont(type: .regular16)
         $0.textColor = .gray200
         $0.textAlignment = .left
+        $0.backgroundColor = .background
         $0.text = StringLiteral.placeholder
     }
     
@@ -76,9 +77,17 @@ final class WriteViewController: UIViewController {
             .drive(loadingIndicator.rx.isAnimating)
             .disposed(by: disposeBag)
         
+        output.viewType
+            .asDriver(onErrorJustReturn: .write)
+            .drive { [weak self] type in
+                guard let self = self else { return }
+                self.naviBar.type = type
+            }
+            .disposed(by: disposeBag)
+        
         textView.rx.didBeginEditing
             .subscribe { [weak self] _ in
-                guard let self else { return }
+                guard let self = self else { return }
                 if self.textView.text == StringLiteral.placeholder {
                     self.textView.text = ""
                 }
@@ -88,7 +97,7 @@ final class WriteViewController: UIViewController {
         
         textView.rx.didEndEditing
             .subscribe { [weak self] _ in
-                guard let self else { return }
+                guard let self = self else { return }
                 if self.textView.text.isEmpty {
                     self.textView.text = StringLiteral.placeholder
                     self.textView.textColor = .gray200
@@ -98,7 +107,7 @@ final class WriteViewController: UIViewController {
         
         textView.rx.didEndDragging
             .subscribe { [weak self] _ in
-                guard let self else { return }
+                guard let self = self else { return }
                 self.textView.resignFirstResponder()
             }
             .disposed(by: disposeBag)
@@ -107,7 +116,7 @@ final class WriteViewController: UIViewController {
 
 extension WriteViewController {
     private func setUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .background
     }
     
     private func setLayout() {
