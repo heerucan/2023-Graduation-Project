@@ -30,7 +30,7 @@ enum StringLiteral {
     }
     
     static let main = "오늘 하루\n내 감정을 기록해봐요 :)"
-    static let placeholder = "오늘 어떤 감정을 느꼈는지 솔직하게 기록해봐요.\nex). 오늘 나를 위한 선물을 해서 기분이 좋았어"
+    static let placeholder = "오늘 하루 어떤 감정을 느꼈는지 솔직하게 기록해볼까요?"
     static let positive = "긍정"
     static let negative = "부정"
     static let neutral = "중립"
