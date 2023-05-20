@@ -20,7 +20,7 @@ final class MainViewController: UIViewController {
     
     var imageDictinoary: [[String: UIImage]] = []
     
-    private let naviBar = KevinNavigationBar(type: .main)
+    private let naviBar = KevinNavigationBar()
     
     private let topTitleLabel = UILabel().then {
         $0.text = StringLiteral.main
@@ -55,9 +55,11 @@ final class MainViewController: UIViewController {
     
     private func bind() {
         let input = MainViewModel.Input(
+            viewWillAppear: self.rx.viewWillAppear.asSignal(),
+            todayDate: Observable.just(calendar.today),
             settingButtonDidTap: naviBar.rightBarButton.rx.tap,
             calendarDidSelected: calendar.rx.didSelect)
-        let output = viewModel.transform(input)
+        _ = viewModel.transform(input)
     }
 }
 
@@ -87,8 +89,9 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
 
 extension MainViewController {
     private func setUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .background
         navigationController?.navigationBar.isHidden = true
+        naviBar.type = .main
     }
     
     private func setLayout() {
@@ -107,7 +110,7 @@ extension MainViewController {
         calendar.snp.makeConstraints { make in
             make.top.equalTo(topTitleLabel.snp.bottom).offset(20)
             make.directionalHorizontalEdges.equalToSuperview()
-            make.height.equalTo(330)
+            make.height.equalTo(350)
         }
     }
     
