@@ -20,14 +20,17 @@ final class WriteViewModel: ViewModelType {
     private let loadingRelay = BehaviorRelay<Bool>(value: false)
     private let typeRelay = BehaviorRelay<AnalysisType>(value: .neutral)
     private let percentageRelay = BehaviorRelay<Confidence?>(value: nil)
+    private let viewTypeRelay = BehaviorRelay<NavigationType>(value: .write)
 
     private let networkError = PublishRelay<Error>()
         
     init(coordinator: MainCoordinator,
-         date: Date?
+         date: Date?,
+         type: NavigationType
     ) {
         self.coordinator = coordinator
         self.dateRelay.accept(date)
+        self.viewTypeRelay.accept(type)
     }
     
     struct Input {
@@ -40,6 +43,7 @@ final class WriteViewModel: ViewModelType {
         let dateText: Observable<String>
         let isValidText: Driver<Bool>
         let isLoading: Driver<Bool>
+        let viewType: Observable<NavigationType>
     }
     
     func transform(_ input: Input) -> Output {
@@ -77,12 +81,25 @@ final class WriteViewModel: ViewModelType {
             }
             .asDriver(onErrorJustReturn: false)
         
+        input.textViewText
+            .orEmpty
+            .asObservable()
+            .subscribe(onNext: { text in
+                guard !text.isEmpty else { return }
+                UserDefaults.standard.setValue(text, forKey: "UserEmotionRecord")
+            })
+            .disposed(by: disposeBag)
+        
         let isLoading = loadingRelay.asDriver(onErrorJustReturn: false)
+        
+        let viewType = viewTypeRelay
+            .map { $0 }
                         
         return Output(
             dateText: date,
             isValidText: isValidText,
-            isLoading: isLoading
+            isLoading: isLoading,
+            viewType: viewType
         )
     }
 }
@@ -118,7 +135,6 @@ extension WriteViewModel {
                     content: response.resultText
                 )
                 self.coordinator?.showAnalysisScreen(data: data)
-                self.loadingRelay.accept(true)
                 
             }, onError: { error in
                 self.networkError.accept(error)
