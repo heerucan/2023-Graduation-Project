@@ -10,9 +10,9 @@ import Foundation
 struct EmotionRequest: Codable {
     let recordDate: String
     let emotionContent: String
-    let positive: CGFloat
-    let negative: CGFloat
-    let neutral: CGFloat
+    let positive: Int
+    let negative: Int
+    let neutral: Int
     let analysis: String
     let emotionType: String
 }
