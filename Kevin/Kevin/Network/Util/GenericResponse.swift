@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GenericResponse<T: Codable>: Codable {
+struct GenericResponse<T: Decodable>: Decodable {
     let code: Int
     let message: String
     let data: T?
@@ -17,11 +17,6 @@ struct GenericResponse<T: Codable>: Codable {
         case message
         case data
     }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        code = (try? values.decode(Int.self, forKey: .code)) ?? 0
-        message = (try? values.decode(String.self, forKey: .message)) ?? ""
-        data = (try? values.decode(T.self, forKey: .data)) ?? nil
-    }
 }
+
+struct VoidData: Decodable { }
