@@ -33,6 +33,13 @@ final class KevinCardView: UIView {
         }
     }
     
+    var analysis: String = "감정분석 결과" {
+        didSet {
+            analysisLabel.text = analysis
+            analysisLabel.setLineSpacing()
+        }
+    }
+    
     private let topView = UIView().then {
         $0.makeCorner(width: 0, radius: 18)
         $0.backgroundColor = .green200
@@ -66,7 +73,7 @@ final class KevinCardView: UIView {
         $0.backgroundColor = .clear
     }
     
-    let analysisLabel = UILabel().then {
+    private let analysisLabel = UILabel().then {
         $0.font = .kevinFont(type: .regular16)
         $0.textAlignment = .left
         $0.numberOfLines = 0
@@ -89,7 +96,6 @@ final class KevinCardView: UIView {
         self.makeCorner()
         self.layer.applyShadow()
         self.backgroundColor = .white.withAlphaComponent(0.5)
-        analysisLabel.setLineSpacing()
     }
     
     private func setLayout() {

@@ -65,40 +65,20 @@ final class AnalysisViewController: UIViewController {
         
         output.resultData
             .compactMap { $0 }
-            .map { $0.date }
-            .bind(onNext: { [weak self] date in
+            .subscribe(onNext: { [weak self] data in
                 guard let self = self else { return }
-                self.cardFrontView.date = date
-                self.cardBackView.date = date
+                self.cardFrontView.date = data.date
+                self.cardBackView.date = data.date
+                self.cardBackView.analysis = data.content
+                self.cardFrontView.percentage = data.percentage!
+                self.backView.image = data.type.back
+                self.resultButton.backgroundColor = data.type.color
+                self.cardFrontView.type = data.type
+                self.cardBackView.type = data.type
+                self.cell.contents = data.type.sticker?.cgImage
             })
             .disposed(by: disposeBag)
         
-        output.resultData
-            .compactMap { $0 }
-            .map { $0.content }
-            .bind(to: cardBackView.analysisLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        output.resultData
-            .compactMap { $0?.percentage }
-            .bind { [weak self] percentage in
-                guard let self = self else { return }
-                self.cardFrontView.percentage = percentage
-            }
-            .disposed(by: disposeBag)
-        
-        output.resultData
-            .compactMap { $0?.type }
-            .bind { [weak self] type in
-                guard let self = self else { return }
-                self.backView.image = type.back
-                self.resultButton.backgroundColor = type.color
-                self.cardFrontView.type = type
-                self.cardBackView.type = type
-                self.cell.contents = type.sticker?.cgImage
-            }
-            .disposed(by: disposeBag)
-                        
         tapGesture.rx.event
             .bind { [weak self] _ in
                 guard let self = self else { return }
@@ -129,7 +109,7 @@ extension AnalysisViewController {
             y: tapGesture.location(in: view).y
         )
         
-        cell.birthRate = 10 // 파티클 개수
+        cell.birthRate = 15 // 파티클 개수
         cell.lifetime = 3 // 파티클 수명
         cell.lifetimeRange = 2
         cell.velocity = 700 // 속도, 높을수록 더 멀리, 빠르게 방출
