@@ -9,49 +9,51 @@ import UIKit
 
 import SnapKit
 
-final class KevinNavigationBar: UIView {
+enum NavigationType {
+    case main
+    case write
+    case detail
+    case analysis
+    case setting
     
-    enum NavigationType {
-        case main
-        case write
-        case detail
-        case analysis
-        case setting
-        
-        var left: UIImage? {
-            switch self {
-            case .main: return nil
-            default: return Image.back
-            }
-        }
-        
-        var right: UIImage? {
-            switch self {
-            case .main: return Image.setting
-            default: return nil
-            }
-        }
-        
-        var rightTitle: String? {
-            switch self {
-            case .write: return StringLiteral.Button.analysis
-            case .detail: return StringLiteral.Button.edit
-            case .analysis: return StringLiteral.Button.ok
-            default: return nil
-            }
+    var left: UIImage? {
+        switch self {
+        case .main: return nil
+        default: return Image.back
         }
     }
     
-    private var type: NavigationType = .main
+    var right: UIImage? {
+        switch self {
+        case .main: return Image.setting
+        default: return nil
+        }
+    }
+    
+    var rightTitle: String? {
+        switch self {
+        case .write: return StringLiteral.Button.analysis
+        case .detail: return StringLiteral.Button.edit
+        case .analysis: return StringLiteral.Button.ok
+        default: return nil
+        }
+    }
+}
+
+final class KevinNavigationBar: UIView {
+    
+    var type: NavigationType = .main {
+        didSet {
+            setIcon(type)
+        }
+    }
     
     let leftBarButton = UIButton()
     let rightBarButton = UIButton()
         
-    init(type: NavigationType) {
-        self.type = type
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         setLayout()
-        setIcon()
     }
     
     required init?(coder: NSCoder) {
@@ -78,7 +80,7 @@ final class KevinNavigationBar: UIView {
         }
     }
     
-    private func setIcon() {
+    private func setIcon(_ type: NavigationType) {
         if type.left != nil {
             leftBarButton.setImage(type.left, for: .normal)
             leftBarButton.setImage(type.left?.withTintColor(.gray200, renderingMode: .alwaysOriginal),
