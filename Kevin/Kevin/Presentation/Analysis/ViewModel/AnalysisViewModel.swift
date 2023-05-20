@@ -88,7 +88,7 @@ final class AnalysisViewModel: ViewModelType {
 }
 
 extension AnalysisViewModel {
-    func requestWrite(request: EmotionRequest) {
+    private func requestWrite(request: EmotionRequest) {
         EmotionService.shared.requestWrite(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }

@@ -38,6 +38,12 @@
 		5B1B5CEE2A13E4200030D407 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CED2A13E4200030D407 /* ChatAPI.swift */; };
 		5B1B5CF02A1418160030D407 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CEF2A1418160030D407 /* DateFormatter+.swift */; };
 		5B1B5CF22A154F060030D407 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CF12A154F060030D407 /* ResultModel.swift */; };
+		5B2FA1C52A17F8520042A1AA /* EmotionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1C42A17F8520042A1AA /* EmotionAPI.swift */; };
+		5B2FA1C72A17F85A0042A1AA /* EmotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1C62A17F85A0042A1AA /* EmotionService.swift */; };
+		5B2FA1C92A17F9830042A1AA /* EmotionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1C82A17F9830042A1AA /* EmotionRequest.swift */; };
+		5B2FA1CB2A18788D0042A1AA /* CalendarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CA2A18788D0042A1AA /* CalendarResponse.swift */; };
+		5B2FA1CD2A187FD40042A1AA /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */; };
+		5B2FA1CF2A187FED0042A1AA /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -53,7 +59,6 @@
 		5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FDC29FFE537003FE7CD /* CalendarCell.swift */; };
 		5B943FDF29FFF918003FE7CD /* AnalysisType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FDE29FFF918003FE7CD /* AnalysisType.swift */; };
 		5B943FE129FFFA0A003FE7CD /* KevinImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE029FFFA0A003FE7CD /* KevinImageButton.swift */; };
-		5B943FE42A007D7F003FE7CD /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE32A007D7F003FE7CD /* ViewType.swift */; };
 		5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B943FE52A00F8B2003FE7CD /* UICollectionViewCell+.swift */; };
 		5BAB2C332A0204C8002DEBDC /* KevinCardSideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */; };
 		5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */; };
@@ -125,6 +130,12 @@
 		5B1B5CED2A13E4200030D407 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		5B1B5CEF2A1418160030D407 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		5B1B5CF12A154F060030D407 /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		5B2FA1C42A17F8520042A1AA /* EmotionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionAPI.swift; sourceTree = "<group>"; };
+		5B2FA1C62A17F85A0042A1AA /* EmotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionService.swift; sourceTree = "<group>"; };
+		5B2FA1C82A17F9830042A1AA /* EmotionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionRequest.swift; sourceTree = "<group>"; };
+		5B2FA1CA2A18788D0042A1AA /* CalendarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarResponse.swift; sourceTree = "<group>"; };
+		5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +150,6 @@
 		5B943FDC29FFE537003FE7CD /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		5B943FDE29FFF918003FE7CD /* AnalysisType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisType.swift; sourceTree = "<group>"; };
 		5B943FE029FFFA0A003FE7CD /* KevinImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinImageButton.swift; sourceTree = "<group>"; };
-		5B943FE32A007D7F003FE7CD /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		5B943FE52A00F8B2003FE7CD /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardSideType.swift; sourceTree = "<group>"; };
 		5BEA1CB629FF8B9E000AD570 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -208,9 +218,10 @@
 		5B1B5CBE2A13BE040030D407 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5B2FA1C32A17F82C0042A1AA /* API */,
+				5B1B5CC12A13BEAB0030D407 /* Service */,
 				5B1B5CC02A13BEA80030D407 /* Util */,
 				5B1B5CBF2A13BEA10030D407 /* DTO */,
-				5B1B5CC12A13BEAB0030D407 /* OpenAPI */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -223,6 +234,9 @@
 				5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */,
 				5B1B5CE12A13E3F40030D407 /* NaverRequestDTO.swift */,
 				5B1B5CE22A13E3F40030D407 /* NaverResponseDTO.swift */,
+				5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */,
+				5B2FA1C82A17F9830042A1AA /* EmotionRequest.swift */,
+				5B2FA1CA2A18788D0042A1AA /* CalendarResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -232,19 +246,29 @@
 			children = (
 				5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */,
 				5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */,
+				5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		5B1B5CC12A13BEAB0030D407 /* OpenAPI */ = {
+		5B1B5CC12A13BEAB0030D407 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				5B1B5CED2A13E4200030D407 /* ChatAPI.swift */,
 				5B1B5CE72A13E4000030D407 /* ChatService.swift */,
-				5B1B5CE82A13E4000030D407 /* NaverAPI.swift */,
 				5B1B5CE92A13E4000030D407 /* NaverService.swift */,
+				5B2FA1C62A17F85A0042A1AA /* EmotionService.swift */,
 			);
-			path = OpenAPI;
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5B2FA1C32A17F82C0042A1AA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5B1B5CE82A13E4000030D407 /* NaverAPI.swift */,
+				5B1B5CED2A13E4200030D407 /* ChatAPI.swift */,
+				5B2FA1C42A17F8520042A1AA /* EmotionAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		5B82EED629F96A2E009F8A08 = {
@@ -412,7 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				5B943FDE29FFF918003FE7CD /* AnalysisType.swift */,
-				5B943FE32A007D7F003FE7CD /* ViewType.swift */,
 				5BAB2C322A0204C8002DEBDC /* KevinCardSideType.swift */,
 			);
 			path = Enum;
@@ -686,10 +709,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B943FE42A007D7F003FE7CD /* ViewType.swift in Sources */,
 				5BEA1CE229FF971D000AD570 /* DetailViewModel.swift in Sources */,
 				5B11519B29FE3CB000130CB0 /* StringLiteral.swift in Sources */,
 				5BEA1CBD29FF8BF3000AD570 /* AnalysisViewController.swift in Sources */,
+				5B2FA1C72A17F85A0042A1AA /* EmotionService.swift in Sources */,
 				5BEA1CCD29FF9004000AD570 /* Coordinator.swift in Sources */,
 				5BEA1CBF29FF8BFA000AD570 /* AnalysisViewModel.swift in Sources */,
 				5BEA1CCA29FF8C94000AD570 /* SettingViewController.swift in Sources */,
@@ -713,12 +736,14 @@
 				5B11519D29FE3DF700130CB0 /* KevinButton.swift in Sources */,
 				5B1B5CEE2A13E4200030D407 /* ChatAPI.swift in Sources */,
 				5B16A1E029FAA6F800211E3C /* ViewModelType.swift in Sources */,
+				5B2FA1CF2A187FED0042A1AA /* DetailResponse.swift in Sources */,
 				5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */,
 				5B1B5CDE2A13E3EA0030D407 /* APIEnvironment.swift in Sources */,
 				5B1B5CE32A13E3F40030D407 /* ChatResponseDTO.swift in Sources */,
 				5B11518229FBD4F300130CB0 /* ReusableProtocol.swift in Sources */,
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
 				5BEA1CBB29FF8BE2000AD570 /* WriteViewController.swift in Sources */,
+				5B2FA1C52A17F8520042A1AA /* EmotionAPI.swift in Sources */,
 				5B11519329FBD96B00130CB0 /* Font.swift in Sources */,
 				5B943FE62A00F8B2003FE7CD /* UICollectionViewCell+.swift in Sources */,
 				5BEA1CB729FF8B9E000AD570 /* MainViewController.swift in Sources */,
@@ -735,13 +760,16 @@
 				5BEA1CD829FF92D8000AD570 /* SettingViewModel.swift in Sources */,
 				5B11518929FBD6E400130CB0 /* NSObject+.swift in Sources */,
 				5BEA1CC129FF8C01000AD570 /* WriteViewModel.swift in Sources */,
+				5B2FA1CB2A18788D0042A1AA /* CalendarResponse.swift in Sources */,
 				5B11518F29FBD78500130CB0 /* UITextView+.swift in Sources */,
 				5B1B5CDC2A13E3DF0030D407 /* APIKey.swift in Sources */,
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
 				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
+				5B2FA1C92A17F9830042A1AA /* EmotionRequest.swift in Sources */,
 				5B1B5CF02A1418160030D407 /* DateFormatter+.swift in Sources */,
 				5B1B5CEB2A13E4010030D407 /* NaverAPI.swift in Sources */,
 				5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */,
+				5B2FA1CD2A187FD40042A1AA /* GenericResponse.swift in Sources */,
 				5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
