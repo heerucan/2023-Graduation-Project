@@ -18,7 +18,7 @@ final class AnalysisViewController: UIViewController {
     private let viewModel: AnalysisViewModel
         
     private lazy var backView = UIImageView()
-    private let naviBar = KevinNavigationBar(type: .analysis)
+    private let naviBar = KevinNavigationBar()
     private let anoterButton = KevinImageButton()
     private let tapGesture = UITapGestureRecognizer()
     private let cardView = UIView()
@@ -49,7 +49,7 @@ final class AnalysisViewController: UIViewController {
     private func bind() {
         let input = AnalysisViewModel.Input(
             backButtonTap: naviBar.leftBarButton.rx.tap,
-            comfirmButtonTap: naviBar.rightBarButton.rx.tap,
+            confirmButtonTap: naviBar.rightBarButton.rx.tap,
             resultButtonTap: resultButton.rx.tap
         )
         let output = viewModel.transform(input)
@@ -153,6 +153,7 @@ extension AnalysisViewController {
 extension AnalysisViewController {
     private func setUI() {
         view.backgroundColor = .systemBackground
+        naviBar.type = .analysis
         backView.contentMode = .scaleAspectFill
         cardBackView.isHidden = true
         cardView.addGestureRecognizer(tapGesture)

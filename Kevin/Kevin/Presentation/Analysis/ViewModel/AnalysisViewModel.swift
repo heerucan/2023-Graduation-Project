@@ -16,6 +16,7 @@ final class AnalysisViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
     private let dataRelay = BehaviorRelay<ResultModel?>(value: nil)
+    private let networkError = PublishRelay<Error>()
     
     init(coordinator: MainCoordinator,
          data: ResultModel
@@ -26,7 +27,7 @@ final class AnalysisViewModel: ViewModelType {
     
     struct Input {
         let backButtonTap: ControlEvent<Void>
-        let comfirmButtonTap: ControlEvent<Void>
+        let confirmButtonTap: ControlEvent<Void>
         let resultButtonTap: ControlEvent<Void>
     }
     
@@ -36,21 +37,42 @@ final class AnalysisViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
+        
         input.backButtonTap
             .subscribe { [weak self] _ in
-                guard let self else { return }
+                guard let self = self else { return }
                 self.coordinator?.finish()
             }
             .disposed(by: disposeBag)
-
-        input.comfirmButtonTap
-            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-            .subscribe { [weak self] _ in
-                guard let self else { return }
-                self.coordinator?.popRootViewController(
-                    date: dataRelay.value!.date,
-                    type: AnalysisType(rawValue: dataRelay.value!.type.rawValue) ?? .negative
+        
+        let emotionRequest = dataRelay
+            .compactMap { $0 }
+            .map { data -> EmotionRequest in
+                var emotionContent = ""
+                if let text = UserDefaults.standard.string(forKey: "UserEmotionRecord") {
+                    emotionContent = text
+                } else {
+                    emotionContent = ""
+                }
+                
+                let request = EmotionRequest(
+                    recordDate: data.date,
+                    emotionContent: emotionContent,
+                    positive: Int(data.percentage!.positive),
+                    negative: Int(data.percentage!.negative),
+                    neutral: Int(data.percentage!.neutral),
+                    analysis: data.content,
+                    emotionType: data.type.rawValue
                 )
+                return request
+            }
+            
+        input.confirmButtonTap
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .withLatestFrom(emotionRequest)
+            .bind { [weak self] request in
+                guard let self = self else { return }
+                self.requestWrite(request: request)
             }
             .disposed(by: disposeBag)
         
@@ -62,5 +84,28 @@ final class AnalysisViewModel: ViewModelType {
             resultButtonTap: resultButtonTap,
             resultData: resultData
         )
+    }
+}
+
+extension AnalysisViewModel {
+    func requestWrite(request: EmotionRequest) {
+        EmotionService.shared.requestWrite(request: request)
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                switch response.code {
+                case 201:
+                    self.coordinator?.popRootViewController(
+                        date: self.dataRelay.value!.date,
+                        type: AnalysisType(rawValue: self.dataRelay.value!.type.rawValue) ?? .negative
+                    )
+                default:
+                    // TODO: - networkError 처리
+                    print(response.code)
+                }
+            }, onError: { error in
+                print(error.localizedDescription)
+                self.networkError.accept(error)
+            })
+            .disposed(by: disposeBag)
     }
 }
