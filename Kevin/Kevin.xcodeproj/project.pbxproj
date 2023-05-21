@@ -45,6 +45,8 @@
 		5B2FA1CF2A187FED0042A1AA /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */; };
 		5B2FA1D32A1A515B0042A1AA /* Secrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B2FA1D22A1A515B0042A1AA /* Secrets.json */; };
 		5B2FA1D72A1A548E0042A1AA /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1D62A1A548E0042A1AA /* Secrets.swift */; };
+		5B2FA1E12A1A789A0042A1AA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1E02A1A789A0042A1AA /* SettingTableViewCell.swift */; };
+		5B2FA1E42A1A79A10042A1AA /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1E32A1A79A10042A1AA /* Setting.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -139,6 +141,8 @@
 		5B2FA1D22A1A515B0042A1AA /* Secrets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Secrets.json; sourceTree = "<group>"; };
 		5B2FA1D62A1A548E0042A1AA /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		5B2FA1DF2A1A5DB40042A1AA /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
+		5B2FA1E02A1A789A0042A1AA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		5B2FA1E32A1A79A10042A1AA /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +284,14 @@
 				5B2FA1DF2A1A5DB40042A1AA /* ci_pre_xcodebuild.sh */,
 			);
 			path = ci_scripts;
+			sourceTree = "<group>";
+		};
+		5B2FA1E22A1A79980042A1AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FA1E32A1A79A10042A1AA /* Setting.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5B82EED629F96A2E009F8A08 = {
@@ -457,6 +469,7 @@
 		5BEA1CC229FF8C4C000AD570 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				5B2FA1E22A1A79980042A1AA /* Model */,
 				5BEA1CCB29FF8C97000AD570 /* View */,
 				5BEA1CD629FF92D0000AD570 /* ViewModel */,
 			);
@@ -515,6 +528,7 @@
 		5BEA1CCB29FF8C97000AD570 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B2FA1E02A1A789A0042A1AA /* SettingTableViewCell.swift */,
 				5BEA1CC929FF8C94000AD570 /* SettingViewController.swift */,
 			);
 			path = View;
@@ -729,6 +743,7 @@
 				5B2FA1C72A17F85A0042A1AA /* EmotionService.swift in Sources */,
 				5BEA1CCD29FF9004000AD570 /* Coordinator.swift in Sources */,
 				5BEA1CBF29FF8BFA000AD570 /* AnalysisViewModel.swift in Sources */,
+				5B2FA1E42A1A79A10042A1AA /* Setting.swift in Sources */,
 				5BEA1CCA29FF8C94000AD570 /* SettingViewController.swift in Sources */,
 				5B11519929FE3C5700130CB0 /* MatrixLiteral.swift in Sources */,
 				5BEA1CD029FF9075000AD570 /* AppCoordinatorProtocol.swift in Sources */,
@@ -753,6 +768,7 @@
 				5B2FA1CF2A187FED0042A1AA /* DetailResponse.swift in Sources */,
 				5BEA1CF729FFC0DD000AD570 /* FSCalendar+Rx.swift in Sources */,
 				5B1B5CDE2A13E3EA0030D407 /* APIEnvironment.swift in Sources */,
+				5B2FA1E12A1A789A0042A1AA /* SettingTableViewCell.swift in Sources */,
 				5B1B5CE32A13E3F40030D407 /* ChatResponseDTO.swift in Sources */,
 				5B11518229FBD4F300130CB0 /* ReusableProtocol.swift in Sources */,
 				5B11518B29FBD71700130CB0 /* UIViewController+.swift in Sources */,
