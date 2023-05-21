@@ -19,6 +19,7 @@ Pods/
 xcuserdata/
 .DS_Store
 APIKey.swift
+Secrets.json
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
