@@ -35,7 +35,7 @@ enum AnalysisType: String {
         }
     }
     
-    var smallSticker: UIImage! {
+    var smallSticker: UIImage? {
         switch self {
         case .positive:
             return Image.Sticker.positive
