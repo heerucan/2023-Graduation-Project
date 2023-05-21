@@ -13,7 +13,7 @@ enum StringLiteral {
         static let cancel = "취소"
         static let analysis = "분석"
         static let edit = "편집"
-        static let anotherResult = "다른 응답보기"
+        static let listen = "음성 듣기"
         static let share = "공유하기"
         static let result = "응답보기"
         static let card = "분석카드 보기"

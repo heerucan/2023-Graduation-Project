@@ -72,6 +72,7 @@ final class AnalysisViewModel: ViewModelType {
             .withLatestFrom(emotionRequest)
             .bind { [weak self] request in
                 guard let self = self else { return }
+                print(request, "요청")
                 self.requestWrite(request: request)
             }
             .disposed(by: disposeBag)
@@ -92,12 +93,10 @@ extension AnalysisViewModel {
         EmotionService.shared.requestWrite(request: request)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
+                print("글작성 요청", response)
                 switch response.code {
                 case 201:
-                    self.coordinator?.popRootViewController(
-                        date: self.dataRelay.value!.date,
-                        type: AnalysisType(rawValue: self.dataRelay.value!.type.rawValue) ?? .negative
-                    )
+                    self.coordinator?.popRootViewController()
                 default:
                     // TODO: - networkError 처리
                     print(response.code)

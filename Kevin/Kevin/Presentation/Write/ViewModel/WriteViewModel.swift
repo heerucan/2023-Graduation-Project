@@ -70,7 +70,7 @@ final class WriteViewModel: ViewModelType {
         
         let date = dateRelay
             .map { date -> String in
-                DateFormatterUtil.format(date)
+                DateFormatterUtil.format(date, .fullKor)
             }
                 
         let isValidText = input.textViewText
@@ -131,7 +131,7 @@ extension WriteViewModel {
                 let data = ResultModel(
                     percentage: self.percentageRelay.value,
                     type: self.typeRelay.value,
-                    date: DateFormatterUtil.format(self.dateRelay.value, .fullSlash),
+                    date: DateFormatterUtil.format(self.dateRelay.value),
                     content: response.resultText
                 )
                 self.coordinator?.showAnalysisScreen(data: data)

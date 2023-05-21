@@ -39,6 +39,6 @@ final class SettingViewController: UIViewController {
 
 extension SettingViewController {
     private func setUI() {
-        view.backgroundColor = .yellow
+        view.backgroundColor = .background
     }
 }

@@ -11,12 +11,12 @@ struct GenericResponse<T: Decodable>: Decodable {
     let code: Int
     let message: String
     let data: T?
-    
-    enum CodingKeys: String, CodingKey {
-        case code
-        case message
-        case data
-    }
+}
+
+enum CodingKeys: String, CodingKey {
+    case code
+    case message
+    case data
 }
 
 struct VoidData: Decodable { }

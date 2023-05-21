@@ -15,8 +15,14 @@ final class DetailViewModel: ViewModelType {
     weak var coordinator: MainCoordinator?
     private let disposeBag = DisposeBag()
     
-    init(coordinator: MainCoordinator) {
+    private let dataRelay = BehaviorRelay<DetailResponse?>(value: nil)
+    
+    init(coordinator: MainCoordinator,
+         data: DetailResponse,
+         type: NavigationType
+    ) {
         self.coordinator = coordinator
+        self.dataRelay.accept(data)
     }
     
     struct Input {
@@ -24,7 +30,7 @@ final class DetailViewModel: ViewModelType {
     }
     
     struct Output {
-        
+        let detailData: Observable<DetailResponse>
     }
     
     func transform(_ input: Input) -> Output {
@@ -35,6 +41,11 @@ final class DetailViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        return Output()
+        let detailData = Observable.just(dataRelay.value)
+            .compactMap { $0 }
+                
+        return Output(
+            detailData: detailData
+        )
     }
 }
