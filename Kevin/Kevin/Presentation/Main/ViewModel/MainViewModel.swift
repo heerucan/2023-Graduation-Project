@@ -30,6 +30,7 @@ final class MainViewModel: ViewModelType {
     }
     
     struct Output {
+        let calendarData: Observable<[CalendarResponse]>
     }
     
     func transform(_ input: Input) -> Output {
@@ -40,9 +41,7 @@ final class MainViewModel: ViewModelType {
                 self.subscribeToday(input.todayDate)
             }
             .disposed(by: disposeBag)
-        
-        let selectedDate = PublishSubject<Date>()
-        
+                
         input.settingButtonDidTap
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
@@ -53,13 +52,18 @@ final class MainViewModel: ViewModelType {
         input.calendarDidSelected
             .subscribe(onNext: { [weak self] date in
                 guard let self = self else { return }
-                let slashDate = DateFormatterUtil.format(date, .fullSlash)
+                let slashDate = DateFormatterUtil.format(date)
                 self.requestDetail(date: date, emotionId: dateEmotiondict[slashDate] ?? 0)
-                selectedDate.onNext(date)
             })
             .disposed(by: disposeBag)
         
-        return Output()
+        let calendarData = calendarRelay
+            .compactMap { $0 }
+            .asObservable()
+        
+        return Output(
+            calendarData: calendarData
+        )
     }
 }
 
@@ -68,7 +72,7 @@ extension MainViewModel {
         todayDate
             .take(1)
             .compactMap { $0 }
-            .map { DateFormatterUtil.format($0, .fullSlash) }
+            .map { DateFormatterUtil.format($0) }
             .subscribe { [weak self] date in
                 guard let self = self else { return }
                 self.requestCalendar(date: date)
@@ -88,10 +92,8 @@ extension MainViewModel {
                 guard let self = self else { return }
                 switch response.code {
                 case 200:
-                    // TODO: - 데이터 세팅
                     self.calendarRelay.accept(response.data)
                     self.matchingDateAndId()
-                    
                 default:
                     // TODO: - networkError 처리
                     print(response.code)
@@ -107,9 +109,9 @@ extension MainViewModel {
         EmotionService.shared.requestDetail(emotionId: emotionId)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                guard let data = response.data else { return }
                 switch response.code {
                 case 200:
+                    guard let data = response.data else { return }
                     self.coordinator?.showDetailScreen(data: data, type: .detail)
                 case 404:
                     self.coordinator?.showWriteScreen(date: date, type: .write)

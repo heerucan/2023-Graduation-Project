@@ -18,7 +18,7 @@ final class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: MainViewModel
     
-    var imageDictinoary: [[String: UIImage]] = []
+    private var imageDictinoary: [[String: UIImage]] = []
     
     private let naviBar = KevinNavigationBar()
     
@@ -59,7 +59,18 @@ final class MainViewController: UIViewController {
             todayDate: Observable.just(calendar.today),
             settingButtonDidTap: naviBar.rightBarButton.rx.tap,
             calendarDidSelected: calendar.rx.didSelect)
-        _ = viewModel.transform(input)
+        let output = viewModel.transform(input)
+        
+        output.calendarData
+            .subscribe(onNext: { [weak self] data in
+                guard let self = self else { return }
+                data.forEach {
+                    let image = AnalysisType(rawValue: $0.emotionType)?.smallSticker ?? Image.Sticker.positive
+                    self.imageDictinoary.append([$0.recordDate: image])
+                }
+                self.calendar.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -78,7 +89,7 @@ extension MainViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         for dict in imageDictinoary {
             if let dateString = dict.keys.first, let image = dict[dateString] {
-                if dateString == DateFormatterUtil.format(date, .fullSlash) {
+                if dateString == DateFormatterUtil.format(date) {
                     return image
                 }
             }
@@ -110,7 +121,7 @@ extension MainViewController {
         calendar.snp.makeConstraints { make in
             make.top.equalTo(topTitleLabel.snp.bottom).offset(20)
             make.directionalHorizontalEdges.equalToSuperview()
-            make.height.equalTo(350)
+            make.height.equalTo(330)
         }
     }
     
@@ -127,7 +138,7 @@ extension MainViewController {
         calendar.allowsSelection = true
         calendar.allowsMultipleSelection = false
 
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = "YYYY년 MM월"
         calendar.appearance.headerTitleOffset = CGPoint(x: -80, y: 0)
         calendar.appearance.headerTitleAlignment = .left
         calendar.appearance.headerTitleFont = .kevinFont(type: .medium16)
