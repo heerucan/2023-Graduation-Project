@@ -12,3 +12,9 @@ extension UICollectionViewCell {
         target.register(Self.self, forCellWithReuseIdentifier: Self.identifier)
     }
 }
+
+extension UITableViewCell {
+    static func register(_ target: UITableView) {
+        target.register(Self.self, forCellReuseIdentifier:Self.identifier)
+    }
+}

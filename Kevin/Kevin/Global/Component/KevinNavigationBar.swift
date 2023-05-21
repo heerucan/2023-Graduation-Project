@@ -16,6 +16,13 @@ enum NavigationType {
     case analysis
     case setting
     
+    var title: String? {
+        switch self {
+        case .setting: return "설정"
+        default: return nil
+        }
+    }
+    
     var left: UIImage? {
         switch self {
         case .main: return nil
@@ -45,7 +52,14 @@ final class KevinNavigationBar: UIView {
     var type: NavigationType = .main {
         didSet {
             setIcon(type)
+            titleLabel.text = type.title
         }
+    }
+    
+    private let titleLabel = UILabel().then {
+        $0.textColor = .black
+        $0.font = .kevinFont(type: .medium16)
+        $0.textAlignment = .center
     }
     
     let leftBarButton = UIButton()
@@ -61,10 +75,14 @@ final class KevinNavigationBar: UIView {
     }
     
     private func setLayout() {
-        addSubviews([leftBarButton, rightBarButton])
+        addSubviews([leftBarButton, titleLabel, rightBarButton])
         
         self.snp.makeConstraints { make in
             make.height.equalTo(MatrixLiteral.naviHeight)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         leftBarButton.snp.makeConstraints { make in
@@ -97,7 +115,7 @@ final class KevinNavigationBar: UIView {
             rightBarButton.setTitle(type.rightTitle, for: .normal)
             rightBarButton.setTitleColor(.black, for: .normal)
             rightBarButton.setTitleColor(.gray200, for: .highlighted)
-            rightBarButton.titleLabel?.font = .kevinFont(type: .regular16)
+            rightBarButton.titleLabel?.font = .kevinFont(type: .medium16)
             rightBarButton.titleLabel?.textAlignment = .center
         }
     }

@@ -149,8 +149,8 @@ extension MainViewController {
         calendar.appearance.titleDefaultColor = .black
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         
-        calendar.appearance.todayColor = .black
-        calendar.appearance.titleTodayColor = .white        
+        calendar.appearance.todayColor = .background
+        calendar.appearance.titleTodayColor = .yellow100
         calendar.appearance.selectionColor = .background
         calendar.appearance.titleSelectionColor = .black
     }

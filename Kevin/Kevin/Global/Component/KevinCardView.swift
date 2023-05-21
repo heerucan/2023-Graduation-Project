@@ -175,6 +175,6 @@ final class KevinCardView: UIView {
         default:
             emotionKor = "중립"
         }
-        return emotionKor + "적인 감정, \(emotion)%"
+        return emotionKor + "적 \(emotion)%"
     }
 }

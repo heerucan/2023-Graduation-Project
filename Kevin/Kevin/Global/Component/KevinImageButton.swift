@@ -20,7 +20,7 @@ final class KevinImageButton: UIButton {
     
     private func setUI() {
         var titleAttribute = AttributedString.init(StringLiteral.Button.listen)
-        titleAttribute.font = .kevinFont(type: .regular13)
+        titleAttribute.font = .kevinFont(type: .medium14)
         
         var configuration = UIButton.Configuration.plain()
         configuration.image = Image.retry

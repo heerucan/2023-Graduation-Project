@@ -14,6 +14,7 @@ enum Image {
     static let positive = UIImage(named: "img_Green")!
     static let back = UIImage(named: "btn_back")!
     static let setting = UIImage(named: "btn_setting")!
+    static let colors = UIImage(named: "img_Colors")!
     
     enum Sticker {
         static let neutral = UIImage(named: "img_small_blue")!
