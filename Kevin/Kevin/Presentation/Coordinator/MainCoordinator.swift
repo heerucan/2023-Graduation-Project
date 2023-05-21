@@ -29,14 +29,14 @@ final class MainCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    func showWriteScreen(date: Date) {
-        let viewModel = WriteViewModel(coordinator: self, date: date)
+    func showWriteScreen(date: Date, type: NavigationType) {
+        let viewModel = WriteViewModel(coordinator: self, date: date, type: type)
         let viewController = WriteViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func showDetailScreen(data: ResultModel) {
-        let viewModel = DetailViewModel(coordinator: self)
+    func showDetailScreen(data: DetailResponse, type: NavigationType) {
+        let viewModel = DetailViewModel(coordinator: self, data: data, type: type)
         let viewController = DetailViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -54,10 +54,7 @@ final class MainCoordinator: Coordinator {
         childCoordinators.append(settingCoordinator)
     }
     
-    func popRootViewController(date: String, type: AnalysisType) {
-        if let rootviewController = navigationController.viewControllers.first as? MainViewController {
-            rootviewController.imageDictinoary.append([date: type.smallSticker])
-        }
+    func popRootViewController() {
         navigationController.popToRootViewController(animated: true)
     }
     
