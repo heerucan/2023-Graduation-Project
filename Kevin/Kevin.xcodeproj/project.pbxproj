@@ -137,8 +137,8 @@
 		5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
 		5B2FA1D22A1A515B0042A1AA /* Secrets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Secrets.json; sourceTree = "<group>"; };
-		5B2FA1D52A1A52C40042A1AA /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		5B2FA1D62A1A548E0042A1AA /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		5B2FA1DF2A1A5DB40042A1AA /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -274,10 +274,10 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		5B2FA1D42A1A52A70042A1AA /* ci_scripts */ = {
+		5B2FA1DE2A1A5D9C0042A1AA /* ci_scripts */ = {
 			isa = PBXGroup;
 			children = (
-				5B2FA1D52A1A52C40042A1AA /* ci_pre_xcodebuild.sh */,
+				5B2FA1DF2A1A5DB40042A1AA /* ci_pre_xcodebuild.sh */,
 			);
 			path = ci_scripts;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 		5B82EED629F96A2E009F8A08 = {
 			isa = PBXGroup;
 			children = (
-				5B2FA1D42A1A52A70042A1AA /* ci_scripts */,
+				5B2FA1DE2A1A5D9C0042A1AA /* ci_scripts */,
 				5B82EEE129F96A2E009F8A08 /* Kevin */,
 				5B82EEF829F96A32009F8A08 /* KevinTests */,
 				5B82EF0229F96A32009F8A08 /* KevinUITests */,
@@ -969,9 +969,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruheekim.Kevin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -998,9 +1001,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruheekim.Kevin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
