@@ -38,7 +38,7 @@ extension ChatAPI: TargetType {
     
     var headers: [String: String]? {
         return [
-            "Authorization": "Bearer \(APIKey.chatKey.rawValue)"
+            "Authorization": "Bearer \(Secrets.chatKey)"
         ]
     }
 }

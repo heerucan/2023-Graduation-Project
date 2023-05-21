@@ -38,8 +38,8 @@ extension NaverAPI: TargetType {
     
     var headers: [String: String]? {
         return [
-            "X-NCP-APIGW-API-KEY-ID": APIKey.naverKeyId.rawValue,
-            "X-NCP-APIGW-API-KEY": APIKey.naverKey.rawValue
+            "X-NCP-APIGW-API-KEY-ID": Secrets.naverKeyID,
+            "X-NCP-APIGW-API-KEY": Secrets.naverKey
         ]
     }
 }

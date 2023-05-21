@@ -26,7 +26,6 @@
 		5B1B5C3C2A10C7610030D407 /* Rx+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5C3B2A10C7600030D407 /* Rx+.swift */; };
 		5B1B5CD82A13C1060030D407 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD72A13C1060030D407 /* Moya */; };
 		5B1B5CDA2A13C1060030D407 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1B5CD92A13C1060030D407 /* RxMoya */; };
-		5B1B5CDC2A13E3DF0030D407 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */; };
 		5B1B5CDE2A13E3EA0030D407 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */; };
 		5B1B5CE32A13E3F40030D407 /* ChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */; };
 		5B1B5CE42A13E3F40030D407 /* ChatRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */; };
@@ -44,6 +43,8 @@
 		5B2FA1CB2A18788D0042A1AA /* CalendarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CA2A18788D0042A1AA /* CalendarResponse.swift */; };
 		5B2FA1CD2A187FD40042A1AA /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */; };
 		5B2FA1CF2A187FED0042A1AA /* DetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */; };
+		5B2FA1D32A1A515B0042A1AA /* Secrets.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B2FA1D22A1A515B0042A1AA /* Secrets.json */; };
+		5B2FA1D72A1A548E0042A1AA /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FA1D62A1A548E0042A1AA /* Secrets.swift */; };
 		5B82EEE329F96A2E009F8A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */; };
 		5B82EEE529F96A2E009F8A08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */; };
 		5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B82EEEB29F96A32009F8A08 /* Assets.xcassets */; };
@@ -118,7 +119,6 @@
 		5B11519E29FE3E0600130CB0 /* KevinCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KevinCardView.swift; sourceTree = "<group>"; };
 		5B16A1DF29FAA6F800211E3C /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5B1B5C3B2A10C7600030D407 /* Rx+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+.swift"; sourceTree = "<group>"; };
-		5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		5B1B5CDF2A13E3F40030D407 /* ChatResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatResponseDTO.swift; sourceTree = "<group>"; };
 		5B1B5CE02A13E3F40030D407 /* ChatRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRequestDTO.swift; sourceTree = "<group>"; };
@@ -136,6 +136,9 @@
 		5B2FA1CA2A18788D0042A1AA /* CalendarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarResponse.swift; sourceTree = "<group>"; };
 		5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		5B2FA1CE2A187FED0042A1AA /* DetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponse.swift; sourceTree = "<group>"; };
+		5B2FA1D22A1A515B0042A1AA /* Secrets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Secrets.json; sourceTree = "<group>"; };
+		5B2FA1D52A1A52C40042A1AA /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
+		5B2FA1D62A1A548E0042A1AA /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		5B82EEDF29F96A2E009F8A08 /* Kevin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kevin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,7 +247,7 @@
 		5B1B5CC02A13BEA80030D407 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				5B1B5CDB2A13E3DE0030D407 /* APIKey.swift */,
+				5B2FA1D62A1A548E0042A1AA /* Secrets.swift */,
 				5B1B5CDD2A13E3EA0030D407 /* APIEnvironment.swift */,
 				5B2FA1CC2A187FD40042A1AA /* GenericResponse.swift */,
 			);
@@ -271,9 +274,18 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		5B2FA1D42A1A52A70042A1AA /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FA1D52A1A52C40042A1AA /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		5B82EED629F96A2E009F8A08 = {
 			isa = PBXGroup;
 			children = (
+				5B2FA1D42A1A52A70042A1AA /* ci_scripts */,
 				5B82EEE129F96A2E009F8A08 /* Kevin */,
 				5B82EEF829F96A32009F8A08 /* KevinTests */,
 				5B82EF0229F96A32009F8A08 /* KevinUITests */,
@@ -325,6 +337,7 @@
 				5B82EEE229F96A2E009F8A08 /* AppDelegate.swift */,
 				5B82EEE429F96A2E009F8A08 /* SceneDelegate.swift */,
 				5B82EEF029F96A32009F8A08 /* Info.plist */,
+				5B2FA1D22A1A515B0042A1AA /* Secrets.json */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -685,6 +698,7 @@
 			files = (
 				5B82EEEF29F96A32009F8A08 /* LaunchScreen.storyboard in Resources */,
 				5B82EEEC29F96A32009F8A08 /* Assets.xcassets in Resources */,
+				5B2FA1D32A1A515B0042A1AA /* Secrets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +768,7 @@
 				5B1B5CEC2A13E4010030D407 /* NaverService.swift in Sources */,
 				5BEA1CE829FFA117000AD570 /* CoordinatorFinishDelegate.swift in Sources */,
 				5B1B5CE52A13E3F40030D407 /* NaverRequestDTO.swift in Sources */,
+				5B2FA1D72A1A548E0042A1AA /* Secrets.swift in Sources */,
 				5B11519129FBD86500130CB0 /* UIButton+.swift in Sources */,
 				5BEA1CE629FF972C000AD570 /* DetailViewController.swift in Sources */,
 				5B11519529FC285700130CB0 /* Color.swift in Sources */,
@@ -762,7 +777,6 @@
 				5BEA1CC129FF8C01000AD570 /* WriteViewModel.swift in Sources */,
 				5B2FA1CB2A18788D0042A1AA /* CalendarResponse.swift in Sources */,
 				5B11518F29FBD78500130CB0 /* UITextView+.swift in Sources */,
-				5B1B5CDC2A13E3DF0030D407 /* APIKey.swift in Sources */,
 				5BEA1CDA29FF9347000AD570 /* SettingCoordinator.swift in Sources */,
 				5B943FDD29FFE537003FE7CD /* CalendarCell.swift in Sources */,
 				5B2FA1C92A17F9830042A1AA /* EmotionRequest.swift in Sources */,
